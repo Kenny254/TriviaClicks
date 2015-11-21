@@ -1,0 +1,72 @@
+{
+  "quiz": [
+    {
+      "choices": [
+        "Sir Authur Lucy",
+        "Nicolaus Copernicus",
+        "Albert Einstein",
+        "Ralph Waldo Emmerson"
+
+      ],
+      "correct": "Albert Einstein",
+      "explanation": "Albert Einstein drafted the special theory of relativity in 1905.",
+      "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/220px-Albert_Einstein_Head.jpg",
+      "question": "Who came up with the theory of relativity?Albert Einstein drafted the special theory of relativity in 1905.Albert Einstein drafted the special theory of relativity in 1905.",
+      "tag": "3"
+    },
+    {
+      "choices": [
+        "Thomas Jefferson",
+        "Dwight D. Eisenhower",
+        "Benjamin Franklin",
+        "Abraham Lincoln"
+      ],
+      "correct": "Thomas Jefferson",
+      "explanation": "The two dollar bill is seldom seen in circulation. As a result, some businesses are confused when presented with the note.",
+      "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/9/94/US_%242_obverse-high.jpg/320px-US_%242_obverse-high.jpg",
+      "question": "Who is on the two dollar bill of America?",
+        "tag": "1"
+    },
+    {
+      "choices": [
+        "First manned flight",
+        "California became a state",
+        "American Civil War began",
+        "Declaration of Independence"
+      ],
+      "correct": "American Civil War began",
+      "explanation": "South Carolina came under attack when Confederate soldiers attacked Fort Sumter. The war lasted until April 9th 1865.",
+      "image": "",
+      "question": "   What event began on April 12, 1861?",
+      "tag": "3"
+    },
+    {
+      "choices": [
+        "Sir Authur Lucy",
+        "Nicolaus Copernicus",
+        "Albert Einstein",
+        "Ralph Waldo Emmerson"
+
+      ],
+      "correct": "Albert Einstein",
+      "explanation": "Albert Einstein drafted the special theory of relativity in 1905.",
+      "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/220px-Albert_Einstein_Head.jpg",
+      "question": "Who came up with the theory of relativity?Albert Einstein drafted the special theory of relativity in 1905.Albert Einstein drafted the special theory of relativity in 1905.",
+      "tag": "3"
+    },
+    {
+      "choices": [
+        "Sir Authur Lucy",
+        "Nicolaus Copernicus",
+        "Albert Einstein",
+        "Ralph Waldo Emmerson"
+
+      ],
+      "correct": "Albert Einstein",
+      "explanation": "Albert Einstein drafted the special theory of relativity in 1905.",
+      "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/220px-Albert_Einstein_Head.jpg",
+      "question": "Who came up with the theory of relativity?Albert Einstein drafted the special theory of relativity in 1905.Albert Einstein drafted the special theory of relativity in 1905.",
+      "tag": "3"
+    }
+  ]
+}

@@ -1,0 +1,682 @@
+  /*css reset */
+        html, body, div, span, h1, lo, li, h2, h3, h4, h5, h6, p, code, small, strike, strong, sub, sup, b, u, i {
+            border: 100px;
+            font-size: 100%;
+            font: oblique;
+            font-weight: 500;
+            vertical-align: bottom;
+            margin: 0;
+            padding: 0;
+            font-style: normal;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+            display: block;
+            font-weight: 500;
+            font-style: normal;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        gh {
+            position: absolute;
+            top: 120px;
+            right: 550px;
+            border: 0;
+            font-size: 100%;
+            font: oblique;
+            vertical-align: middle;
+        }
+
+
+        body {
+            line-height: 8;
+            font: 1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-weight: 700;
+        }
+
+        ol, ul {
+            list-style: hanging;
+            background-color: ghostwhite;
+        }
+
+       
+
+        strong {
+            font-weight: 700;
+        }
+
+        #frame {
+            width: 100%;
+            height: 100%;
+            font-style: normal;
+            font-weight: 700;
+            font-family: Goudy Stout;
+            text-align: center;
+            font: 1.1em;
+            background-color: #1b1a1a;
+            padding: 0px;
+            margin: 0px;
+        }
+
+         img.back-mage {
+            display: block;
+            position: absolute;
+            right: 0px;
+            width: inherit;
+            margin: 10px auto;
+            top: -600px;
+            
+            height: 500px;
+          
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+             -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+            -o-transition: all 1s ease; 
+            transition: all 1s ease;
+            -webkit-filter: brightness(40%);
+            filter: brightness(40%);
+            
+        }
+
+
+         img.back-rob {
+            display: block;
+            position: absolute;
+            right: 0px;
+            width: inherit;
+            margin: 10px auto;
+            top: 1200px;
+            
+            height: 500px;
+          
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+             -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+            -o-transition: all 1s ease; 
+            transition: all 1s ease;
+            -webkit-filter: brightness(40%);
+            filter: brightness(40%);
+            
+        }
+
+          yu {
+            position: absolute;
+            top: 250px;
+            
+            left: 400px;
+            right: 400px;
+            height: 170px;
+            border-radius: 100px;
+            -moz-border-radius: 150px;
+            -webkit-border-radius: 150px;
+            border: 7px solid white;
+            margin: auto;
+            background-color: #1b1a1a;
+            width: 170px;
+        }
+
+
+        us {
+            position: absolute;
+            top: 250px;
+            bottom: 250px;
+            left: 400px;
+            right: 400px;
+            height: 91px;
+            margin: auto;
+            background: url(../images/logo.png);
+            width: 91px;
+        }
+
+        li {
+            position: absolute;
+            top: 400px;
+            right: 400px;
+            height: 40px;
+            font: 1.1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+            background-color: cyan;
+            font-size: 13pt;
+            width: 310px;
+        }
+
+        last {
+            position: absolute;
+            top: 400px;
+            right: 400px;
+            height: 40px;
+            font: 1.1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+            background-color: cyan;
+            font-size: 13pt;
+            width: 310px;
+        }
+
+        rty {
+            position: absolute;
+            top: 400px;
+            right: 400px;
+            height: 40px;
+            font: 1.1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+            background-color: cyan;
+            font-size: 13pt;
+            width: 310px;
+        }
+
+
+         iop {
+            position: absolute;
+            top: 400px;
+            right: 400px;
+            height: 40px;
+            font: 1.1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+            background-color: cyan;
+            font-size: 13pt;
+            width: 310px;
+        }
+
+
+           iot {
+            position: absolute;
+            top: 400px;
+            right: 400px;
+            height: 40px;
+            font: 1.1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+            background-color: cyan;
+            font-size: 13pt;
+            width: 310px;
+        }
+        lu {
+            position: absolute;
+            top: 400px;
+            right: 750px;
+            height: 40px;
+            font: 1.1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+            background-color: dimgrey;
+            font-size: 13pt;
+            width: 310px;
+        }
+
+
+
+        la {
+            position: absolute;
+            top: 520px;
+            right: 400px;
+            height: 40px;
+            font: 1.1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 600;
+            text-align: center;
+            font-size: 13pt;
+            width: 310px;
+        }
+
+
+
+        lo {
+            position: absolute;
+            top: 520px;
+            right: 750px;
+            height: 40px;
+            font: 1.1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 600;
+            text-align: center;
+            background: honeydew;
+            font-size: 13pt;
+            width: 310px;
+        }
+
+
+
+        @font-face {
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 500;
+            src: url(../fonts/OpenSans-Bold.ttf);
+        }
+
+        h1 {
+            position: absolute;
+            top: 20px;
+            left: 55px;
+            color: white;
+            font: 1.1em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            padding: 0;
+            width: auto;
+        }
+
+        h15 {
+            position: absolute;
+            top: 20px;
+            right: 55px;
+            color: white;
+            font: 1.1em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            padding: 0;
+            width: auto;
+        }
+
+        h8 {
+            position: absolute;
+            top: 40px;
+            right: 100px;
+            background: white;
+            width: 1360px;
+            height: 8px;
+            margin: 0px auto;
+        }
+
+        h10 {
+            position: fixed;
+            top: 10px;
+            right: 1360px;
+            background: #00B5D9;
+            width: 1365px;
+            height: 10px;
+            margin: 0px auto;
+        }
+
+         h16 {
+            position: fixed;
+            top: 400px;
+            right: 1360px;
+            background-color: #084a57;
+            width: 1365px;
+            height: 10px;
+            margin: 0px auto;
+        }
+
+         h18 {
+            position: fixed;
+            bottom: 10px;
+            left: 160px;
+            background-color: green;
+            width: 12px;
+           
+           
+            height: 0px;
+            
+        }
+
+         h19 {
+            position: fixed;
+            bottom: 10px;
+            right: 560px;
+            background-color: green;
+            width: 12px;
+
+            height: 0px;
+            
+        }
+
+        h5 {
+            position: absolute;
+            top: 10px;
+            right: 690px;
+            color: blue;
+            font: 1.8em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            width: auto;
+        }
+
+        h9 {
+            position: absolute;
+            top: 22px;
+            left: 530px;
+            color: #00B5D9;
+            font: 1.8em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            width: auto;
+        }
+
+
+
+        h {
+            position: absolute;
+            top: 12px;
+            color: white;
+            font: 1.8em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            width: auto;
+        }
+
+
+          h01 {
+            position: absolute;
+            top: 12px;
+            color: yellow;
+            font: 1.8em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            width: auto;
+        }
+
+        g.glat {
+            position: absolute;
+            top: 400px;
+            color: white;
+            font: 1.8em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            width: auto;
+        }
+
+        h3 {
+            position: absolute;
+            top: 5px;
+            left: 54px;
+            color: #ffbe1a;
+            font: 1.2em Gotham SSm B;
+            font-family: Goudy Stout;
+            margin: 0px;
+            width: 120px;
+        }
+
+
+        h17 {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            color: #ffbe1a;
+            font: 1.2em Gotham SSm B;
+            font-family: Goudy Stout;
+            margin: 0px;
+            width: 120px;
+        }
+
+
+        h12 {
+            position: absolute;
+            top: 5px;
+            left: 70px;
+            color: #EA4E50;
+            font: 1.2em Gotham SSm B;
+            font-family: Goudy Stout;
+            margin: 0px;
+            width: 520px;
+        }
+
+        loader {
+            position: absolute;
+            top: 700px;
+            right: 670px;
+            color: #0a758a;
+            font: 4.3em;
+            margin: 0px;
+            font-weight: bold;
+            width: 420px;
+        }
+
+        wert {
+            position: absolute;
+            top: 700px;
+            right: 670px;
+            color: #0a758a;
+            font: 1.8em Gotham SSm B;
+            font-family: Goudy Stout;
+            margin: 0px;
+            width: 420px;
+        }
+
+        h4 {
+            position: absolute;
+            top: 40px;
+            right: 320px;
+            color: #0a758a;
+            text-align: center;
+            font: Gotham SSm B bold 1em;
+            font-family: Goudy Stout;
+            height: 5px;
+            margin: 0px;
+            width: 210px;
+        }
+
+        h2 {
+            position: relative;
+            top: 220px;
+            left: 400px;
+            right: 200px;
+            font: 1.3em Gotham SSm B;
+            font-family: Goudy Stout;
+            padding: 0px;
+            width: 500px;
+            color: white;
+            font-style: normal;
+            font-weight: bold;
+            margin: 0px 0;
+        }
+
+         h0 {
+            position: relative;
+            top: 220px;
+            left: 400px;
+            right: 200px;
+            font: 1.3em Gotham SSm B;
+            font-family: Goudy Stout;
+            padding: 0px;
+            width: 500px;
+            color: white;
+            font-style: normal;
+            font-weight: bold;
+            
+        }
+
+        p {
+            margin: 5px 0 5px;
+            font: bold 1em/1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: Goudy Stout;
+            color: #999;
+            left: 500px;
+            font-size: larger;
+        }
+
+        img.user-image {
+            display: block;
+            position: absolute;
+            right: 1265px;
+            max-width: 250px;
+            margin: 10px auto;
+            top: 10px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+             -moz-border-radius: 150px;
+            -webkit-border-radius: 150px;
+             border: 3px solid white;
+        }
+
+
+
+
+         img.init-mage {
+            display: block;
+            position: absolute;
+            right: -150px;
+            max-width: 250px;
+            margin: 10px auto;
+            top: 130px;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+             -moz-border-radius: 150px;
+            -webkit-border-radius: 150px;
+             border: 5px solid white;
+        }
+
+        
+          img.init-hut {
+            display: block;
+            position: absolute;
+            right: 620px;
+            max-width: 250px;
+            margin: 10px auto;
+            top: 350px;
+            width: 90px;
+            height: 90px;
+         
+        }
+
+
+
+          img.init-bot {
+            display: block;
+            position: absolute;
+            left: -150px;
+            max-width: 250px;
+            margin: 10px auto;
+            top: 430px;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+             -moz-border-radius: 150px;
+            -webkit-border-radius: 150px;
+             border: 5px solid white;
+        }
+
+        img.robot-image {
+            display: block;
+            position: absolute;
+            right: 10px;
+            max-width: 250px;
+            margin: 10px auto;
+            top: 10px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+             -moz-border-radius: 150px;
+            -webkit-border-radius: 150px;
+             border: 3px solid white;
+        }
+
+
+        img.capplayer-image {
+            display: block;
+            position: absolute;
+            right: 10px;
+            max-width: 250px;
+            margin: 10px auto;
+            top: 10px;
+            width: 800px;
+            height: 600px;
+           
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+           
+        }
+
+        #choice-block {
+            display: inherit;
+            list-style: none;
+            margin: 0;
+        }
+
+        #submitbutton {
+            display: block;
+            list-style: none;
+            margin: 0;
+            top: 10px;
+            left: 40px;
+        }
+
+        #timetext {
+            display: block;
+            list-style: none;
+            margin: 0;
+            top: 10px;
+            left: 40px;
+        }
+
+        #scoreboard {
+            display: block;
+            list-style: none;
+            margin: 0;
+        }
+
+         #otherboard {
+            display: block;
+            list-style: none;
+            margin: 0;
+        }
+        #explanation {
+            margin: 0 auto;
+            top: 400px;
+            right: 600px;
+            font-weight: 900;
+            padding: 80px;
+            text-align: center;
+            width: 40%;
+            font-size: 103px;
+            font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: Goudy Stout;
+            color: #00B5D9;
+        }
+
+           
+
+
+        .choice-box {
+            width: 310px;
+            height: 80px;
+            display: block;
+            font: 1.1em Gotham SSm B;
+            font-style: normal;
+            font-weight: 600;
+            font-family: Goudy Stout;
+            text-align: center;
+            background: #ffffff;
+            cursor: pointer;
+            border-radius: 3px;
+        }
