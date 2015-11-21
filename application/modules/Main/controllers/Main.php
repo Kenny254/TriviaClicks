@@ -35,9 +35,7 @@ class Main extends CI_Controller {
 		$helper = $fb->getRedirectLoginHelper();
 		$permissions = ['email', 'user_likes']; // optional
 		$loginUrl = $helper->getLoginUrl(site_url('Main/Callback'), $permissions);
-
-		//echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
-
+		
 		$currentUser = ParseUser::getCurrentUser();
 		// var_dump($currentUser);
 		// exit;
