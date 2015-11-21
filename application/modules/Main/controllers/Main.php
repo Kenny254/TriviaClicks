@@ -26,7 +26,7 @@ class Main extends CI_Controller {
 	public function index()
 	{ 
 		ParseClient::setStorage( new ParseSessionStorage() );
-		// ParseUser::logOut();
+
 		$fb = new Facebook\Facebook([
 		  'app_id' => '1630991853823416',
 		  'app_secret' => '5970b129fe7f15f55534e060aef703a7',
@@ -35,7 +35,7 @@ class Main extends CI_Controller {
 		$helper = $fb->getRedirectLoginHelper();
 		$permissions = ['email', 'user_likes']; // optional
 		$loginUrl = $helper->getLoginUrl(site_url('Main/Callback'), $permissions);
-		
+
 		$currentUser = ParseUser::getCurrentUser();
 		// var_dump($currentUser);
 		// exit;
