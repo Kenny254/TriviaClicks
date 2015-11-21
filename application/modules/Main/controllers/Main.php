@@ -25,10 +25,6 @@ class Main extends CI_Controller {
 	 */
 	public function index()
 	{ 
-		// $testObject = ParseObject::create("TestObject");
-		// $testObject->set("foo", "bar");
-		// $testObject->save();
-		
 		ParseClient::setStorage( new ParseSessionStorage() );
 		// ParseUser::logOut();
 		$fb = new Facebook\Facebook([
