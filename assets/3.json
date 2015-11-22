@@ -1,0 +1,70 @@
+{
+  "quiz": [
+    {
+      "choices": [
+        "Reflected Ray",
+        "Refraceted Ray",
+        "Incident Ray",
+        "Normal Ray"
+
+      ],
+      "correct": "Incident Ray",
+      "explanation": "Incident Ray",
+      "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/220px-Albert_Einstein_Head.jpg",
+      "question": "The ray of light hitting the mirror is _____________.",
+      "tag": "3"
+    },
+    {
+      "choices": [
+        "Battery",
+        "Bulb",
+        "Fuse",
+        "Plug"
+      ],
+      "correct": "Fuse",
+      "explanation": "Fuse" ,
+      "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/9/94/US_%242_obverse-high.jpg/320px-US_%242_obverse-high.jpg",
+      "question": "An example of safety device in a circuit is_________.",
+        "tag": "3"
+    },
+    {
+      "choices": [
+        "Thermometer",
+        "Wind Wane",
+        "Thermometer",
+        "Anemometer"
+      ],
+      "correct": "Anemometer",
+      "explanation": "Anemometer",
+      "image": "",
+      "question": "The instrument used in measuring the speed of wind is called ___________.",
+        "tag": "4"
+    },
+    {
+      "choices": [
+        "Brake",
+        "Clutch",
+        "Ratchet",
+        "Slider"
+      ],
+      "correct": "Slider",
+      "explanation": "Slider",
+      "image": "",
+      "question": "Which of these devices is used for controlling motion?",
+        "tag": "4"
+    },
+    {
+      "choices": [
+        "Mallet",
+        "Hammer",
+        "Spanner",
+        "Drill"
+      ],
+      "correct": "Drill",
+      "explanation": "Drill",
+      "image": "",
+      "question": "Which of these tools is NOT a driving tool?",
+        "tag": "4"
+    }
+  ]
+}
