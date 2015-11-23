@@ -35,12 +35,12 @@ class Uploadpage extends CI_Controller {
 		// $testObject->set("foo", "bar");
 		// $testObject->save();
 		$info = $this->header();	
-		$this->load->view('uploadpage', $info, false);
+		$this->load->view('setquestions', $info, false);
 	}
 
 	public function header()
 	{
-		return array('imageinfo' => $this->imagequery->findImage(), 
+		return array('imageinfo' => "", 
 					);
 	}
 
@@ -48,18 +48,50 @@ class Uploadpage extends CI_Controller {
 	{
 		if ($this->input->post('upload')) {
 			$upload = $this->input->post('upload');
-			$upload1 = $_FILES ;
-			$filePath = site_url('assets');
-			$fileToUpload = $filePath . '/'.$_FILES['upload']['name']['file'];
-			$imageId = $upload['image'];
-			//$fileToUpload = $upload['file'];
-			$fileName = $imageId.'.json';
+			// $upload1 = $_FILES ;
+			// $filePath = site_url('assets');
+			// $fileToUpload = $filePath . '/'.$_FILES['upload']['name']['file'];
+			// $imageId = $upload['image'];
+			// //$fileToUpload = $upload['file'];
+			// $fileName = $imageId.'.json';
 			// $quesnum = (int)$upload['quesnum'];
-			// $question = $upload['question'];
-			// $answer = $upload['answer'];
-			// $choices = $upload['choices'];
-			// $explain = $upload['explain'];
-			// $tag = $upload['tag'];
+			$question = $upload['question'];
+			$answer = $upload['answer'];
+			$optiona = $upload['optiona'];
+			$optionb = $upload['optionb'];
+			$optionc = $upload['optionc'];
+			$optiond = $upload['optiond'];
+			$choicesArray;
+			//$choices = $upload['choices'];
+			$explain = $upload['explain'];
+			$tag = $upload['tag'];
+
+			for ($i=0; $i < count($upload['optiona']); $i++) { 
+				for ($i=0; $i < count($upload['optionb']); $i++) { 
+					for ($i=0; $i < count($upload['optionc']); $i++) { 
+						for ($i=0; $i < count($upload['optiond']); $i++) {
+							$array = [$upload['optiona'][$i], $upload['optionb'][$i], $upload['optionc'][$i], $upload['optiond'][$i]];
+							$choicesArray[] = $array;
+							//var_dump($array); 
+						 // 	for ($i=0; $i < count($choiceArray); $i++) { 
+							// 	$object = $choiceArray[$i];
+							// 	$pieces = explode(",", $object);
+							// 	$secondArray = ['choices' => $pieces,
+							// 				   'correct' => $pieces2[$i],
+							// 				   'explanation' => $pieces3[$i],
+							// 				   'image' => "http://upload.wikimedia.org/wikipedia/commons",
+							// 				   'question' => $pieces1[$i],
+							// 				   'tag' => $pieces4[$i]
+							// 				  ];
+							// 	$finalArray[] = $secondArray;									
+							// }
+						}
+					}
+				} 
+			}
+
+			// var_dump(json_encode($choicesArray));
+			// exit;
 
 			// $pieces = explode("; ", $choices);
 			// $pieces1 = explode("; ", $question);
@@ -71,53 +103,34 @@ class Uploadpage extends CI_Controller {
 			// $answerArray = $pieces2;
 			// $explainArray = $pieces3;
 			// $tagArray = $pieces4;
-			// $array = [];
-			// $finalArray;
-			
-			// for ($i=0; $i < count($quesnum); $i++) { 
-			// 	# code...
-			// 	$pieces5 = explode(",", $pieces);
-			// 						$finalArray = ['choices' => $pieces5,
-			// 									   'correct' => $pieces2,
-			// 									   'explanation' => $pieces3,
-			// 									   'image' => "http://upload.wikimedia.org/wikipedia/commons",
-			// 									   'question' => $pieces1,
-			// 									   'tag' => $pieces4
-			// 									  ];
-			// 						$array = ['quiz' => [$finalArray]
-			// 								 ];
-			// 					    var_dump($array);
-			// }
-				// for ($i=0; $i < count($pieces2); $i++) { 
-				// 	for ($i=0; $i < count($pieces3); $i++) { 
-				// 		for ($i=0; $i < count($pieces1); $i++) { 
-				// 			for ($i=0; $i < count($pieces4); $i++) { 
-				// 			 	for ($i=0; $i < count($choiceArray); $i++) { 
-				// 					$object = $choiceArray[$i];
-				// 					$pieces = explode(",", $object);
-				// 					$finalArray = ['choices' => $pieces,
-				// 								   'correct' => $pieces2[$i],
-				// 								   'explanation' => $pieces3[$i],
-				// 								   'image' => "http://upload.wikimedia.org/wikipedia/commons",
-				// 								   'question' => $pieces1[$i],
-				// 								   'tag' => $pieces4[$i]
-				// 								  ];
-				// 					$array = ['quiz' => [$finalArray]
-				// 							 ];
-				// 					// for ($i=0; $i < count($array); $i++) { 
-				// 					// 	$array1 = ['quiz' => [$array['quiz']]
-				// 					// 		 ];
-				// 					// 	var_dump($array1);
-				// 					// }
-				// 					//$finale = implode(" ", $array);
-									
-				// 				}
-				// 			}
-				// 		}
-				// 	} 
-				// }
-			//exit;
-			//exit;
+			// $array;
+			$finalArray;
+			// $secondArray;
+
+			for ($i=0; $i < count($upload['question']); $i++) { 
+				for ($i=0; $i < count($upload['answer']); $i++) { 
+					for ($i=0; $i < count($upload['explain']); $i++) { 
+						for ($i=0; $i < count($upload['tag']); $i++) { 
+						 	for ($i=0; $i < count($choicesArray); $i++) { 
+							// 	$object = $choiceArray[$i];
+							// 	$pieces = explode(",", $object);
+								$secondArray = ['choices' => $choicesArray[$i],
+											   'correct' => $upload['answer'][$i],
+											   'explanation' => $upload['explain'][$i],
+											   'image' => "http://upload.wikimedia.org/wikipedia/commons",
+											   'question' => $upload['question'][$i],
+											   'tag' =>$upload['tag'][$i]
+											  ];
+								$finalArray[] = $secondArray;									
+							}
+						}
+					}
+				} 
+			}
+			$array = ['quiz' => $finalArray,
+				       ];
+			var_dump(json_encode($array));
+			exit;
 
 			$status1 = true;
 
