@@ -55,6 +55,6 @@ class Main extends CI_Controller {
 
 	public function test()
 	{
-		echo "hello me";
+		echo "hello, it is me :)....(In Adele's voice...)";
 	}
 }
