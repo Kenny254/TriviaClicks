@@ -42,15 +42,15 @@ class Imagequery_model extends CI_Model {
         }
     }
 
-    public function findImage()
+    public function findCategory()
     {
         $query = new ParseQuery("Categories");
-        $result = $query->equalTo("name", "General")
-        ->first();
-
-        $query = new ParseQuery("Images");
-        $results = $query->equalTo("category", $result)
+        $results = $query->ascending("name")
         ->find();
+
+        // $query = new ParseQuery("Images");
+        // $results = $query->equalTo("category", $result)
+        // ->find();
         $imageInfo = [];
 
         for ($i = 0; $i < count($results); $i++) {

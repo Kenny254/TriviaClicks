@@ -37,8 +37,23 @@ class Uploadpage extends CI_Controller {
 
 	public function header()
 	{
-		return array('imageinfo' => "", 
+		return array('imageinfo' => $this->imagequery->findCategory(), 
 					);
+	}
+
+	public function gameQuery($categoryId)
+	{
+		$category = new ParseObject("Categories", $categoryId);
+		$query = new ParseQuery("Images");
+		$results = $query->equalTo("category", $category)
+		->find();
+		$imageInfo = [];
+
+        for ($i = 0; $i < count($results); $i++) {
+	        $object = $results[$i];
+	        $imageInfo[$object->getObjectId()] = $object->get('name');
+      	}
+      	echo json_encode($imageInfo) ;
 	}
 
 	public function upload()
@@ -52,6 +67,7 @@ class Uploadpage extends CI_Controller {
 			// //$fileToUpload = $upload['file'];
 			// $fileName = $imageId.'.json';
 			// $quesnum = (int)$upload['quesnum'];
+			$imageId = $upload['imageId'];
 			$question = $upload['question'];
 			$answer = $upload['answer'];
 			$optiona = $upload['optiona'];

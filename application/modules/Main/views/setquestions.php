@@ -95,6 +95,22 @@ $(document).ready(function(c) {
 
     <p/>
         <div style="margin-left: 10px;">
+            Select A Category: <br>
+            <select required id="catSelect" name="upload[image]">
+                <option name="image" value="">Select Category</option>
+                <?php foreach ($imageinfo as $id => $val) {?>
+                    <option name="image" value="<?php echo $id ?>"><?php echo $val; ?></option>
+                <?php }?>
+            </select>
+            <div id="gameSelect">
+                <br>Select A Game:<br>
+                <select id="gameRealSelect" required id="something" name="upload[image]">
+                    <option name="image" value="">Select Game</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div style="margin-left: 10px;">
             <span id="quesnum">
                 <input id="numques" type="text" placeholder="number of questions">
             </span>
@@ -136,9 +152,6 @@ $(document).ready(function(c) {
                 </form>
             </span>
         </div>
-     
-
-
 
 </body>
 </html>

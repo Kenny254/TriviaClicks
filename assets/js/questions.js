@@ -1,5 +1,6 @@
 jQuery(document).ready(function($){
 	$('#upform').hide();
+	$('#gameSelect').hide();
 
 	$('#quesnumok').click(function() {
 		var options = "";
@@ -12,6 +13,44 @@ jQuery(document).ready(function($){
         $('#upform').show();
         $('.upForm').html(options);
         $('.upForm').append(options1);
+	});
+
+	$('#catSelect').change(function(event) {
+		var categoryId = $(this).val();
+		//alert(categoryId);
+		if (categoryId == 0 ){
+            $('#gameSelect').hide();
+        }else{
+			$('#gameRealSelect').html('<option>Loading...</option>');
+			$.ajax({
+				url: 'Uploadpage/gameQuery/'+categoryId,
+				type: 'GET',
+				success: function(data){
+					$('#gameRealSelect').html('');
+					var options;
+					var option2 = "<option value=''>Select Game</option>";
+					var sdata = jQuery.parseJSON(data);
+					$.each(sdata, function(index, val) {
+						options+="<option value='"+ index +"'>"+ val +"</option>";                    
+	                });
+	                $('#gameSelect').show();
+	                $('#gameRealSelect').append(option2);
+	                $('#gameRealSelect').append(options);
+				},
+				error: function(xhr) {
+					
+				}
+			});
+		}
+	});
+
+	$('#gameRealSelect').change(function(event) {
+		var gameId = $(this).val();
+		var options = "<input id='gameIdOpt' type='hidden' name='upload[gameId]' value='"+ gameId +"'>";
+		$('#gameIdOpt').remove();
+		$('.upForm').prepend(options);
+		//alert(categoryId);
+		//alert(gameId);
 	});
 
 });

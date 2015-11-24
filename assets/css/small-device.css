@@ -1,0 +1,1141 @@
+  /*css reset */
+
+
+
+        html, body, div, span, p, code, small, strike, strong, sub, sup, b, u, i {
+            border: 100px;
+            font-size: 100%;
+            font: oblique;
+            font-weight: 500;
+            vertical-align: bottom;
+            margin: 0;
+            padding: 0;
+            font-style: normal;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+            display: block;
+            font-weight: 500;
+            font-style: normal;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        gh {
+            position: absolute;
+            top: 120px;
+            right: 550px;
+            border: 0;
+            font-size: 100%;
+            font: oblique;
+            vertical-align: middle;
+        }
+
+
+        body {
+            line-height: 8;
+            font: 1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-weight: 700;
+        }
+
+        ol, ul {
+            list-style: hanging;
+            background-color: ghostwhite;
+        }
+
+       
+
+        strong {
+            font-weight: 700;
+        }
+
+        #frame {
+            width: 100%;
+            height: 100%;
+            font-style: normal;
+            font-weight: 700;
+            font-family: Goudy Stout;
+            text-align: center;
+            margin: 0px auto;
+            background-color: #e8e8e8;
+            padding: 0px;
+           
+        }
+
+        
+         .cyc {
+            position: absolute;
+            top: 310px;
+            
+   
+            left: 100px;
+            right: 100px;
+            height: 170px;
+            border-radius: 100px;
+            -moz-border-radius: 150px;
+            -webkit-border-radius: 150px;
+            border: 7px solid #e8e8e8;
+            margin: 0px auto;
+            margin-top: 0px auto;
+            margin-bottom: 0px auto;
+            padding: 0;
+            
+            background-color: #2a2a2a;
+            width: 170px;
+        }
+
+         
+
+
+         img.back-rob {
+          
+            position: absolute;
+            right: 0px;
+            left: 0px;
+            width: inherit;
+           
+            bottom: -390px;
+            
+            height: inherit;
+            margin: 0 auto;
+            background-repeat: no-repeat;
+            animation-name: empl;
+           animation-duration: 1s;
+           -webkit-animation-name: empl; /* Chrome, Safari, Opera */
+           -webkit-animation-duration: 1s; /* Chrome, Safari, Opera */
+            background-size: cover;
+             -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+            -o-transition: all 1s ease; 
+            transition: all 1s ease;
+            -webkit-filter: brightness(40%);
+            filter: brightness(40%);
+            
+        }
+
+     
+        /* Chrome, Safari, Opera */
+@-webkit-keyframes empl {
+    0%   { bottom:-550px}
+   
+   
+}
+
+/* Standard syntax */
+@keyframes empl {
+    0%   { bottom:-550px}
+    
+    
+}
+
+
+         img.bac-mage {
+           
+            position: absolute;
+            right: 0px;
+            left: 0px;
+            width: inherit;
+            
+            top: -190px;
+            
+            height: inherit;
+            animation-name: example;
+            animation-duration: 1s;
+            -webkit-animation-name: example; /* Chrome, Safari, Opera */
+            -webkit-animation-duration: 1s; /* Chrome, Safari, Opera */
+            margin: 0 auto;
+            background-size: cover;
+             -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+            -o-transition: all 1s ease; 
+            transition: all 1s ease;
+            -webkit-filter: brightness(40%);
+            filter: brightness(40%);
+            
+        }
+
+      
+         
+        /* Chrome, Safari, Opera */
+@-webkit-keyframes example {
+    0%   { top:-500px}
+   
+   
+}
+
+/* Standard syntax */
+@keyframes example {
+    0%   { top:-500px}
+    
+    
+}
+
+
+
+
+        us {
+            position: absolute;
+            top: 320px;
+           
+            left: 120px;
+            right: 120px;
+            height: 91px;
+            margin: 0px auto;
+            background: url(../images/logo.png);
+            width: 91px;
+        }
+
+         li {
+            position: absolute;
+            top: 400px;
+            right: 200px;
+            color: white;
+            height: 29px;
+            font: 1.1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+            background-color: cyan;
+            font-size: 13pt;
+            width: 290px;
+        }
+
+        last {
+            position: absolute;
+            top: 500px;
+            right: 400px;
+            color: white;
+            height: 29px;
+            font: 1.1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+            background-color: cyan;
+            font-size: 13pt;
+            width: 290px;
+        }
+
+        rty {
+           position: absolute;
+            top: 600px;
+            right: 400px;
+            color: white;
+            height: 29px;
+            font: 1.1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+            background-color: cyan;
+            font-size: 13pt;
+            width: 290px;
+        }
+
+
+         iop {
+            position: absolute;
+            top: 400px;
+            right: 400px;
+            height: 40px;
+            font: 1.1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+            background-color: cyan;
+            font-size: 13pt;
+            width: 310px;
+        }
+
+
+           iot {
+            position: absolute;
+            top: 400px;
+            right: 400px;
+            height: 40px;
+            font: 1.1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+            background-color: cyan;
+            font-size: 13pt;
+            width: 310px;
+        }
+        lu {
+            position: absolute;
+            top: 500px;
+            color: white;
+            height: 29px;
+            font: 1.1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 700;
+            
+            padding: 0px;
+            background-color: dimgrey;
+            font-size: 13pt;
+            width: 290px;
+        }
+
+
+
+        la {
+            position: absolute;
+            top: 600px;
+            right: 400px;
+            color: white;
+            height: 29px;
+            font: 1.1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 600;
+            text-align: center;
+            font-size: 13pt;
+            width: 290px;
+        }
+
+
+
+        lo {
+            position: absolute;
+            top: 700px;
+            right: 750px;
+            color: white;
+            height: 29px;
+            font: 1.1em Gotham SSm A;
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 600;
+            text-align: center;
+            background: honeydew;
+            font-size: 13pt;
+            width: 290px;
+        }
+
+
+
+        @font-face {
+            font-family: Goudy Stout;
+            font-style: normal;
+            font-weight: 500;
+            src: url(../fonts/OpenSans-Bold.ttf);
+        }
+
+        h1 {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            color: #2a2a2a;
+            margin: 0 auto;
+            font: 0.9em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: right;
+            padding: 0;
+            width: auto;
+        }
+
+
+        y {
+            position: absolute;
+            top: 340px;
+            left: 380px;
+            color: white;
+            font: 3.4em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            padding: 0;
+            width: auto;
+        }
+
+         y6 {
+            position: absolute;
+            top: 290px;
+            left: -100px;
+            color: #2a2a2a;
+            margin: 0 auto;
+            font: 2.4em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            padding: 0;
+            width: auto;
+        }
+
+        j7 {
+            position: absolute;
+            top: 290px;
+            right: -100px;
+            color: #2a2a2a;
+            margin: 0 auto;
+            font: 2.4em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            padding: 0;
+            width: auto;
+        }
+
+        h15 {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #2a2a2a;
+            margin: 0 auto;
+            font: 0.9em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            padding: 0;
+            width: auto;
+        }
+
+        .wert {
+            position: relative;
+            top: 370px;
+            right: 400px;
+            left: 400px;
+            background: #e8e8e8;
+            width: 0px;
+            height: 8px;
+            margin: 0px auto;
+        }
+
+        h10 {
+            position: fixed;
+            top: 10px;
+            right: 1360px;
+            background: #e6424f;
+            width: 1365px;
+            height: 10px;
+            margin: 0% auto;
+        }
+
+         h16 {
+            position: fixed;
+            top: 400px;
+            right: 1360px;
+            background-color: #e6424f;
+            width: 1365px;
+            height: 10px;
+            margin: 0% auto;
+        }
+
+         h18 {
+            position: fixed;
+            bottom: 10px;
+            left: 160px;
+            background-color: green;
+            width: 12px;
+           
+           
+            height: 0px;
+            
+        }
+
+         h19 {
+            position: fixed;
+            bottom: 10px;
+            right: 560px;
+            background-color: green;
+            width: 12px;
+
+            height: 0px;
+            
+        }
+
+        h5 {
+            position: absolute;
+            top: 10px;
+            right: 690px;
+            color: blue;
+            font: 1.8em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            width: auto;
+        }
+
+        h9 {
+               position: absolute;
+            top: 80px;
+             left: 150px;
+             right: 150px;
+             color: #f48e31;
+             margin: 0 auto;
+            font: 3.0em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            padding: 0px;
+            width: 70px;
+            
+            background-color: #2a2a2a;
+            border-radius: 150px;
+          
+        }
+
+
+
+        j.poer {
+            position: absolute;
+            top: 1300px;
+            right: 150px;
+            left: 150px;
+            color: #2a2a2a;
+            margin: 0 auto;
+            font: 4.0em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            opacity: 1;
+            width: auto;
+           
+           
+        }
+
+
+
+
+        j.tyup {
+            position: absolute;
+            top: 40px;
+            right: 150px;
+            left: 150px;
+            color: #e92727;
+            margin: 0 auto;
+            font: 3.4em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+         
+            width: auto;
+            padding: 0px;
+           
+        }
+
+
+          h01 {
+            position: absolute;
+            top: 12px;
+            color: yellow;
+            font: 1.8em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            width: auto;
+        }
+
+        g.glat {
+            position: absolute;
+            top: 400px;
+            left: -200px;
+            color: white;
+            margin: 0px auto;
+            font: 1.6em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: left;
+            width: auto;
+        }
+
+
+
+        i.matt {
+            position: absolute;
+            top: 400px;
+            right: -250px;
+            color: white;
+            margin: 0px auto;
+            font: 1.6em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: right;
+            width: auto;
+        }
+
+
+        h3 {
+             position: absolute;
+            top: 30px;
+            left: 55px;
+             color: #f48e31;
+             margin: 0 auto;
+            font: 1.2em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            padding: 0;
+            width: auto;
+            
+        }
+
+
+        h17 {
+              position: absolute;
+            top: 30px;
+            right: 55px;
+             color: #f48e31;
+             margin: 0 auto;
+            font: 1.2em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            padding: 0;
+            width: auto;
+        }
+
+
+        h12 {
+            position: absolute;
+            top: 5px;
+            left: 70px;
+            color: #EA4E50;
+            font: 1.2em Gotham SSm B;
+            font-family: Goudy Stout;
+            margin: 0px;
+            width: 520px;
+        }
+
+
+        y {
+            position: absolute;
+            top: 550px;
+            right: 150px;
+            left: 150px;
+            margin: 0 auto;
+            color: #0a758a;
+            font: 1.1em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+         
+            width: auto;
+            padding: 0px;
+           
+           
+        }
+
+       
+
+        h4 {
+            position: absolute;
+            top: 45px;
+            right: 150px;
+            left: 150px;
+            color: #2a2a2a;
+            margin: 0 auto;
+            font: 1.0em Gotham SSm B;
+            font-family: Goudy Stout;
+            text-align: center;
+            padding: 0px;
+            height: auto;
+            width: auto;
+            padding: 0;
+            
+        }
+
+        h2 {
+            position: absolute;
+            top: 360px;
+           
+            text-align: center;
+            font: 1.3em Gotham SSm B;
+            font-family: Goudy Stout;
+            padding: 0px;
+            width: inherit;
+            margin: 0 auto;
+            color: #2a2a2a;
+            font-style: normal;
+            font-weight: 400;
+            
+        }
+
+         h0 {
+            position: absolute;
+            top: 220px;
+            left: 400px;
+            right: 200px;
+            font: 1.3em Gotham SSm B;
+            font-family: Goudy Stout;
+            padding: 0px;
+            width: 500px;
+            color: white;
+            font-style: normal;
+            font-weight: bold;
+            
+        }
+
+        p {
+            margin: 5px 0 5px;
+            font: bold 1em/1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: Goudy Stout;
+            color: #999;
+            left: 500px;
+            font-size: larger;
+        }
+
+
+        img.any-image {
+            
+            position: absolute;
+            left: 36%;
+            right: 36%;
+            margin: 0 auto;
+            top: 180px;
+            width: 50px;
+            height: 50px;
+           
+            background-repeat: no-repeat;
+            background-position: center center;
+            
+            
+           
+        }
+
+          img.that-image {
+            
+            position: absolute;
+            left: 36%;
+            right: 36%;
+            margin: 0 auto;
+            top: -120px;
+            width: 130px;
+            height: 130px;
+           
+            background-repeat: no-repeat;
+            background-position: center center;
+            
+            
+           
+        }
+
+           img.bonus-image {
+            
+            position: absolute;
+            left: 536%;
+            right: 536%;
+            margin: 0 auto;
+            top: -120px;
+            width: 130px;
+            height: 130px;
+           
+            background-repeat: no-repeat;
+            background-position: center center;
+            
+            
+           
+        }
+
+             img.draw-image {
+            
+            position: absolute;
+            left: 536%;
+            right: 536%;
+            margin: 0 auto;
+            top: -130px;
+            width: 220px;
+            height: 180px;
+           
+            background-repeat: no-repeat;
+            background-position: center center;
+            
+            
+           
+        }
+
+             img.win-image {
+            
+            position: absolute;
+            left: 536%;
+            right: 536%;
+            margin: 0 auto;
+            top: -130px;
+            width: 180px;
+            height: 180px;
+           
+            background-repeat: no-repeat;
+            background-position: center center;
+            
+            
+           
+        }
+
+                img.lose-image {
+            
+            position: absolute;
+            left: 36%;
+            right: 36%;
+            margin: 0 auto;
+            top: -140px;
+            width: 180px;
+            height: 180px;
+           
+            background-repeat: no-repeat;
+            background-position: center center;
+            
+            
+           
+        }
+
+        img.user-image {
+            display: block;
+            position: absolute;
+            left: 10px;
+            max-width: 250px;
+            margin: 10px auto;
+            top: 10px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+             -moz-border-radius: 150px;
+            -webkit-border-radius: 150px;
+             border: 5px solid #2a2a2a;
+             box-shadow: #0a758a;
+        }
+
+
+
+
+         img.init-mage {
+            display: block;
+            position: absolute;
+            left: 70%;
+            
+            margin: 0px auto;
+            top: 130px;
+            width: 90px;
+            height: 90px;
+             
+            animation-name: ertop;
+            animation-duration: 1s;
+            animation-delay: 2s;
+           -webkit-animation-name: ertop; /* Chrome, Safari, Opera */
+           -webkit-animation-duration: 1s; /* Chrome, Safari, Opera */
+           -webkit-animation-delay: 2s; /* Chrome, Safari, Opera */
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+             -moz-border-radius: 150px;
+            -webkit-border-radius: 150px;
+             border: 5px solid #e8e8e8;
+             box-shadow: #0a758a;
+        }
+
+         
+        /* Chrome, Safari, Opera */
+@-webkit-keyframes ertop {
+    25%   { left:0px}
+   
+   
+}
+
+/* Standard syntax */
+@keyframes ertop {
+    25%   { left:0px}
+    
+    
+}
+
+
+          img.init-mages {
+            display: block;
+            position: absolute;
+            left: -100px;
+          
+            margin: 0px auto;
+            top: 130px;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+             -moz-border-radius: 150px;
+            -webkit-border-radius: 150px;
+              border: 5px solid #2a2a2a;
+             box-shadow: #0a758a;
+        }
+
+
+        img.init-botes {
+            display: block;
+            position: absolute;
+            right: -100px;
+          
+            margin: 0px auto;
+            top: 130px;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+             -moz-border-radius: 150px;
+            -webkit-border-radius: 150px;
+             border: 5px solid #2a2a2a;
+             box-shadow: #0a758a;
+        }
+
+        
+          img.init-hut {
+            display: block;
+            position: absolute;
+            right: 620px;
+            max-width: 250px;
+            margin: 10px auto;
+            top: 350px;
+            width: 90px;
+            height: 90px;
+         
+        }
+
+
+
+          img.init-bot {
+            display: block;
+            position: absolute;
+            right: 70%;
+            max-width: 250px;
+            margin: 10px auto;
+            top: 480px;
+             animation-name: yutop;
+            animation-duration: 1s;
+            animation-delay: 2s;
+           -webkit-animation-name: yutop; /* Chrome, Safari, Opera */
+           -webkit-animation-duration: 1s; /* Chrome, Safari, Opera */
+           -webkit-animation-delay: 2s; /* Chrome, Safari, Opera */
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+             -moz-border-radius: 150px;
+            -webkit-border-radius: 150px;
+              border: 5px solid #e8e8e8;
+             box-shadow: #0a758a;
+        }
+
+            /* Chrome, Safari, Opera */
+@-webkit-keyframes yutop {
+    25%   { right:0px}
+   
+   
+}
+
+/* Standard syntax */
+@keyframes yutop {
+    25% {
+        right: 0px;
+    }
+}
+        img.robot-image {
+            display: block;
+            position: absolute;
+            right: 10px;
+            max-width: 250px;
+            margin: 10px auto;
+            top: 10px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+             -moz-border-radius: 150px;
+            -webkit-border-radius: 150px;
+              border: 5px solid #2a2a2a;
+             box-shadow: #0a758a;
+        }
+
+
+        img.capplayer-image {
+            display: block;
+            position: absolute;
+            right: 10px;
+            max-width: 250px;
+            margin: 10px auto;
+            top: 10px;
+            width: 800px;
+            height: 600px;
+           
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+           
+        }
+
+        #choice-block {
+            display: inherit;
+            list-style: none;
+            margin: 0;
+        }
+
+        #submitbutton {
+            display: block;
+            list-style: none;
+            margin: 0;
+            top: 10px;
+            left: 40px;
+        }
+
+        #timetext {
+            display: block;
+            list-style: none;
+            margin: 0;
+            top: 10px;
+            left: 40px;
+        }
+
+        
+       
+        #scoreboard {
+            display: block;
+            list-style: none;
+            margin: 0;
+        }
+
+         #otherboard {
+            display: block;
+            list-style: none;
+            margin: 0;
+        }
+        #explanation {
+            margin: 0 auto;
+            top: 400px;
+            right: 600px;
+            font-weight: 900;
+            padding: 80px;
+            text-align: center;
+            width: 40%;
+            font-size: 103px;
+            font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: Goudy Stout;
+            color: #00B5D9;
+        }
+
+         .choice-box1 {
+           position: absolute;
+            width: 290px;
+            height: 29px;
+            left: 0px;
+            right: 0px;
+            color: white;
+            padding: 25px;
+            display: block;
+            font: 1.0em Gotham SSm B;
+            font-style: normal;
+            font-weight: 400;
+            margin: 0 auto;
+            font-family: Goudy Stout;
+            text-align: center;
+            background: #3db6a2;
+            cursor: pointer;
+            border-radius: 0px;
+            box-shadow: #226459 0px -5px inset;
+        }
+
+        .choice-box2 {
+            position: absolute;
+            width: 290px;
+            height: 29px;
+            padding: 25px;
+            color: white;
+            left:  0px;
+            right: 0px;
+            margin: 0 auto;
+            display: block;
+            font: 1.0em Gotham SSm B;
+            font-style: normal;
+            font-weight: 400;
+            font-family: Goudy Stout;
+            text-align: center;
+            background: #3db6a2;
+            cursor: pointer;
+            border-radius: 0px;
+              box-shadow: #226459 0px -5px inset;
+        }
+
+        .choice-box3 {
+            position: absolute;
+            width: 290px;
+            height: 29px;
+
+            padding: 25px;
+            color: white;
+            left: 0px;
+            margin: 0 auto;
+            right: 0px;
+            display: block;
+            font: 1.0em Gotham SSm B;
+            font-style: normal;
+            font-weight: 400;
+            font-family: Goudy Stout;
+            text-align: center;
+            background: #3db6a2;
+            cursor: pointer;
+            border-radius: 0px;
+             box-shadow: #226459 0px -5px inset;
+        }
+
+        .choice-box4 {
+            position: absolute;
+            width: 290px;
+            height: 29px;
+            left: 0px;
+            padding: 25px;
+            color: white;
+            right: 0px;
+            margin: 0 auto;
+            display: block;
+            font: 1.0em Gotham SSm B;
+            font-style: normal;
+            font-weight: 400;
+            font-family: Goudy Stout;
+            text-align: center;
+            background: #3db6a2;
+            cursor: pointer;
+            border-radius: 0px;
+             box-shadow: #226459 0px -5px inset;
+        }
+           
+
+
+       .choice-box5 {
+            position: absolute;
+            width: 290px;
+            height: 29px;
+            left: 100px;
+           
+            color: white;
+            padding: 25px;
+            display: block;
+            font: 1.0em Gotham SSm B;
+            font-style: normal;
+            font-weight: 400;
+            margin: 0 auto;
+            font-family: Goudy Stout;
+            text-align: center;
+            background: #e6424f;
+            cursor: pointer;
+            border-radius: 0px;
+            box-shadow: #641111 0px -5px inset;
+        }
+
+        .choice-box6 {
+           position: absolute;
+            width: 290px;
+            height: 29px;
+            left: 100px;
+           
+            color: white;
+            padding: 25px;
+            display: block;
+            font: 1.0em Gotham SSm B;
+            font-style: normal;
+            font-weight: 400;
+            margin: 0 auto;
+            font-family: Goudy Stout;
+            text-align: center;
+            background: #3db6a2;
+            cursor: pointer;
+            border-radius: 0px;
+            box-shadow: #193e38 0px -5px inset;
+        }

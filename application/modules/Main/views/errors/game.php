@@ -11,7 +11,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="<?php echo site_url();?>assets/css/game.css" rel="stylesheet" type="text/css" media="all" />
 
-    <script type="text/javascript" src="jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
     <script>
 
@@ -40,7 +40,7 @@
 
 
     /******* No need to edit below this line *********/
-     var currentquestion = 0, score2 = 0, droidchose = 0, selected = false, score = 0, submt = true, timer = 10, started = true, picked, player1score=0, player2score=0;
+     var currentquestion = 0, score2 = 0, droidchose = 0, points = 0, selected = false, score = 0, submt = true, timer = 10, started = true, picked, player1score=0, player2score=0;
 
     jQuery(document).ready(function ($) {
 
@@ -51,7 +51,7 @@
         var trio = Math.round(Math.random() * (10 - 5)) + 1; // generate new time (between 3sec and 500"s)
 
         if (trio == 1) {
-            var robotBackImage = "https://sp.yimg.com/xj/th?id=OIP.Md725d28ecb8ddf9f3d1f9adfb987e95eH0&pid=15.1&P=0&w=245&h=168";
+            var robotBackImage = "http://ichef.bbci.co.uk/wwfeatures/1600_900/images/live/p0/36/c9/p036c9vv.jpg";
 
              
             var robotImage = "../../../assets/gameimages/1.png";
@@ -60,7 +60,7 @@
             var robotName = "Hangok";
         } else if (trio == 2) {
 
-            var robotBackImage = "https://sp.yimg.com/xj/th?id=OIP.M28a797e373874727b91c25f767b8da40o0&pid=15.1&P=0&w=207&h=156";
+            var robotBackImage = "http://ichef.bbci.co.uk/wwfeatures/1600_900/images/live/p0/36/c9/p036c9vv.jpg";
 
 
             var robotImage = "../../../assets/gameimages/2.png"
@@ -70,7 +70,7 @@
 
         } else if (trio == 3) {
 
-            var robotBackImage = "http://c.dryicons.com/files/graphics_previews/wavy_blue_background.jpg";
+            var robotBackImage = "http://ichef.bbci.co.uk/wwfeatures/1600_900/images/live/p0/36/c9/p036c9vv.jpg";
 
 
             var robotImage = "../../../assets/gameimages/3.png"
@@ -80,7 +80,7 @@
 
         } else if (trio == 4) {
 
-            var robotBackImage = "http://www.webdesignhot.com/wp-content/uploads/2011/07/Abstract-Design-Blue-Background-Vector-Graphic.jpg";
+            var robotBackImage = "http://ichef.bbci.co.uk/wwfeatures/1600_900/images/live/p0/36/c9/p036c9vv.jpg";
 
 
             var robotImage = "../../../assets/gameimages/4.png"
@@ -90,7 +90,7 @@
 
         } else {
 
-            var robotBackImage = "https://sp.yimg.com/xj/th?id=OIP.Mb7079ceb83d9ab915f46037cce982d90H0&pid=15.1&P=0&w=269&h=152";
+            var robotBackImage = "http://ichef.bbci.co.uk/wwfeatures/1600_900/images/live/p0/36/c9/p036c9vv.jpg";
 
 
             var robotImage = "../../../assets/gameimages/5.png"
@@ -123,7 +123,7 @@
         var Difficulty = $('.difficulty').val();
 
 
-        var categoryImage = $('.gamePic').val();
+        var categoryImage = "";
 
         var tapSound = document.createElement('audio');
         var startSound = document.createElement('audio');
@@ -138,7 +138,7 @@
         tapSound.setAttribute('src', '../../../assets/gameimages/TapSound.ogg');
         startSound.setAttribute('src', '../../../assets/gameimages/Start.ogg');
         backgroundSound.setAttribute('src', '../../../assets/gameimages/game_music.ogg');
-        badSound.setAttribute('src', '../../../assets/gameimages/Wrong.ogg');
+        badSound.setAttribute('src', '../../../assets/gameimages/Alert.ogg');
         goodSound.setAttribute('src', '../../../assets/gameimages/Good.mp3');
         category.setAttribute('src', '../../../assets/gameimages/Swishe_banner.ogg');
         swishe.setAttribute('src', '../../../assets/gameimages/Swishe.mp3');
@@ -155,8 +155,10 @@
 
 
 
+//Detect browser and write the corresponding name
 
 
+       //window.alert(window.screen.availHeight)
 
 
             /**
@@ -186,7 +188,7 @@
 
 
                     function runTimer() {
-                        $('#submitbutton').empty();
+                        $('h9').empty();
 
 
                         timer--;
@@ -203,7 +205,7 @@
 
 
 
-                        $(document.createElement('h9')).css({ 'font-size': '1.8em Gotham SSm B', 'text-align': 'center', 'left': '620px', 'font-weight': '700' }).text(timer).appendTo('#submitbutton');
+                        $(document.createElement('h9')).text(timer).appendTo('#frame');
 
                     }
 
@@ -275,8 +277,7 @@
 
 
 
-
-
+                       
 
 
 
@@ -495,7 +496,7 @@
                         //$('.choice').fadeTo(300, 1)
                         //setTimeout(function () { $('.choice').fadeTo(400, 0); }, 1000)
                         //add game score
-                        $(document.createElement('h3')).css({ 'text-align': 'left', 'font-size': '1.4em', 'top': '50px', 'right': '100px' }).text(Math.round(score / data.quiz.length * 100)).appendTo('#scoreboard');
+                        $(document.createElement('h3')).text(Math.round(score / data.quiz.length * 100)).appendTo('#scoreboard');
 
                     } else {
                         badSound.play();
@@ -670,17 +671,33 @@
                 $('#scoreboard').empty();
                 if (player1score > player2score) {
                     won.play();
-                    $(document.createElement('h12')).css({ 'font-size': '5em', 'top': '80px', 'left': '440px', 'color': '#993232' }).text("YOU WON!.").insertAfter('#question');
+
+                    points = 10;
+                    $.ajax({
+                        url: '../givePoints/'+points,
+                        type: 'GET',
+                        success: function(data){
+                           // alert(data);
+                        },
+                        error: function(data){
+                           // alert("Error");
+                        }
+                    });
+                    
+                    //window.alert(points);
+                    $(document.createElement('j')).addClass('tyup').attr('id', 'tyup').text("YOU WON").appendTo('#frame');
                 } else if (player2score > player1score) {
                     lost.play();
-                    $(document.createElement('h12')).css({ 'font-size': '5em', 'top': '80px', 'left': '440px', 'color': '#993232' }).text("YOU LOSE!.").insertAfter('#question');
+                    
+                    $(document.createElement('j')).addClass('tyup').attr('id', 'tyup').text("YOU LOSE").appendTo('#frame');
 
                 } else {
-                    $(document.createElement('h12')).css({ 'font-size': '5em', 'top': '80px', 'left': '440px', 'color': '#993232' }).text("A TIE!.").insertAfter('#question');
+                    $(document.createElement('j')).addClass('tyup').attr('id', 'tyup').text("A TIE").appendTo('#frame');
                     badSound.play();
+                    points = 0;
                 }
-                $(document.createElement('rty')).addClass('choice choice-box').attr('data-index', 0).text('Not Right Now..').css({ 'background-color': '#993232', 'text.align': 'center', 'width': '240px', 'left': '750px', 'height': '14px', 'padding': '25px 0', 'opacity': '1', 'top': '390px', 'color': 'white' }).appendTo('#choice-block');
-                $(document.createElement('last')).addClass('choice choice-box').attr('data-index', 0).text('Bring it On').css({ 'background-color': '#017d46', 'text.align': 'center', 'width': '240px', 'right': '750px', 'height': '14px', 'padding': '25px 0', 'opacity': '1', 'top': '390px', 'color': 'white' }).appendTo('#choice-block');
+                $(document.createElement('rty')).addClass('choice choice-box').attr('data-index', 0).text('Not Right Now..').css({ 'background-color': 'red', 'border-radius': '3px', 'color': 'white', 'width': '300px', 'height': '22px', 'padding': '25px 0', 'opacity': '1', 'top': '520px', 'right': '700px', 'left': '320px' }).appendTo('#frame');
+                $(document.createElement('last')).addClass('choice choice-box').attr('data-index', 0).text('Bring it On').css({ 'background-color': '#017d46', 'border-radius': '3px', 'color': 'white', 'width': '300px', 'height': '22px', 'padding': '25px 0', 'opacity': '1', 'top': '520px', 'right': '320px', 'left': '700px' }).appendTo('#frame');
                 $('last').on('mouseover', function(){
                     $(this).css({ 'background-color': 'lightgreen', 'color': 'white' });
                 });
@@ -704,25 +721,23 @@
                     showStart();
 
                 })
+
                 // player 1 score
-                $.getJSON(targetid, function (data) {
-                    $(document.createElement('h2')).css({ 'font-size':'3em', 'top': '185px',  'color': 'white', 'left': '200px'}).text(player1score).insertAfter('#question');
-                })
+                $(document.createElement('y6')).text(player1score).appendTo('#frame');
 
 
                 //player image holder
-                $(document.createElement('img')).addClass('init-mage').css({ 'top': '210px', 'color': 'white', 'right': '750px' }).attr('src', playerImage).appendTo('#frame');
+                $(document.createElement('img')).addClass('init-mages').attr('src', playerImage).appendTo('#frame');
 
 
 
 
                 // player 2 score
-                $.getJSON(targetid, function (data) {
-                    $(document.createElement('h0')).css({ 'font-size': '3em', 'top': '250px', 'color': 'white', 'left': '240px' }).text(player2score).insertAfter('#question');
-                })
+                $(document.createElement('j7')).text(player2score).appendTo('#frame');
+
 
                 //robot image holder
-                $(document.createElement('img')).addClass('init-bot').css({ 'top': '200px', 'color': 'white', 'left': '750px' }).attr('src', robotImage).appendTo('#frame');
+                $(document.createElement('img')).addClass('init-botes').attr('src', robotImage).appendTo('#frame');
 
             }
 
@@ -735,14 +750,17 @@
         //Andriod documentation
             function DriodPicks() {
 
-                if (Difficulty == "beginner") {
-                    var chances = Math.round(Math.random() * (9 - 5)) + 1; // generate new time (between 3sec and 500"s)
-                } else if (Difficulty == "intermediate") {
-                    var chances = Math.round(Math.random() * (7 - 1)) + 1; // generate new time (between 3sec and 500"s)
-                } else {
-                    var chances = Math.round(Math.random() * (5 - 1)) + 1; // generate new time (between 3sec and 500"s)
-                }
 
+             
+                    if (Difficulty == "beginner") {
+                        var chances = power; // generate new time (between 3sec and 500"s)
+                    } else if (Difficulty == "intermediate") {
+                        var chances = power; // generate new time (between 3sec and 500"s)
+                    } else {
+                        var chances = power; // generate new time (between 3sec and 500"s)
+                        //window.alert(chances)
+                    }
+                
                 currentquiz++;
               clearInterval(myFar);
 
@@ -829,7 +847,7 @@
                         $("#otherboard").empty();
                         
                         score2++;
-                        $(document.createElement('h3')).css({ 'text-align': 'right', 'font-size': '1.4em', 'top': '50px', 'left': '1090px' }).text(Math.round(score2 / data.quiz.length * 100)).appendTo('#otherboard');
+                        $(document.createElement('h17')).text(Math.round(score2 / data.quiz.length * 100)).appendTo('#otherboard');
 
                         $('h19').animate({
                             height: '+=60%',
@@ -866,15 +884,16 @@
                 //add title and player details
                 if (typeof playerName !== "undefined" && $.type(playerName) === "string") {
 
-                    $(document.createElement('h1')).css({ 'opacity': '0', 'left': '-80px' }).text(playerName).appendTo('#frame');
+                    $(document.createElement('h1')).text(playerName).appendTo('#frame');
 
                     $("h1").animate({
                         opacity: 1,
-                        left: "+=190",
+                        left: "+=80",
 
                     }, 500, function () {
                         // Animation complete.
                     });
+
                     //player image holder
                     $(document.createElement('img')).addClass('user-image').attr('src', playerImage).appendTo('#frame');
 
@@ -888,10 +907,11 @@
 
 
                     //add computer details
-                    $(document.createElement('h15')).css({ 'opacity': '0', 'right': '0px' }).text(robotName).appendTo('#frame');
+                    $(document.createElement('h15')).text(robotName).appendTo('#frame');
+
                     $("h15").animate({
                         opacity: 1,
-                        right: "+=100",
+                        right: "+=80",
 
                     }, 500, function () {
                         // Animation complete.
@@ -912,7 +932,7 @@
                         // $(document.createElement('p')).addClass('pager').attr('id','pager').text('Question 1 of ' + quiz.length).appendTo('#frame');
                         //add first question
                         $.getJSON(targetid, function (data) {
-                            $(document.createElement('h2')).addClass('question').attr('id', 'question').css({ 'font-size': '1.5em Gotham SSm B', 'left': '430px', 'text-align': 'center', 'opacity': '1' }).text(data.quiz[0]['question']).appendTo('#frame');
+                            $(document.createElement('h2')).addClass('question').attr('id', 'question').text(data.quiz[0]['question']).appendTo('#frame');
                             //add image if present
                         })
 
@@ -924,20 +944,21 @@
                         //questions holder
                         $(document.createElement('ul')).attr('id', 'choice-block').appendTo('#frame');
                         //add timer holder
-                        $(document.createElement('h9')).attr('id', 'submitbutton').appendTo('#frame');
+                        //$(document.createElement('h9')).attr('id', 'submitbutton').appendTo('#frame');
                         //add choices
-                        $(document.createElement('h4')).attr('id', 'timetext').appendTo('#frame');
+                       
 
                         $(document.createElement('h3')).attr('id', 'scoreboard').appendTo('#frame');
 
-                        $(document.createElement('h3')).attr('id', 'otherboard').appendTo('#frame');
+                        $(document.createElement('h17')).attr('id', 'otherboard').appendTo('#frame');
+
 
                         $.getJSON(targetid, function (data) {
                             addChoices(data.quiz[0]['choices']);
                         })
                         $.getJSON(targetid, function (data) {
                             //player 1 score
-                            $(document.createElement('h3')).css({ 'text-align': 'left', 'font-size': '1.4em', 'top': '50px', 'opacity': '0', 'right': '280px' }).text(Math.round(score / data.quiz.length * 100)).appendTo('#scoreboard');
+                            $(document.createElement('h3')).text(Math.round(score / data.quiz.length * 100)).appendTo('#scoreboard');
                             $('h3').fadeTo(200, 1);
 
                             //player1 score bar
@@ -945,7 +966,7 @@
 
 
                             //player 2 score
-                            $(document.createElement('h17')).css({ 'text-align': 'right', 'font-size': '1.4em', 'top': '50px', 'opacity': '0', 'left': '1090px' }).text(Math.round(score2 / data.quiz.length * 100)).appendTo('#otherboard');
+                            $(document.createElement('h17')).text(Math.round(score2 / data.quiz.length * 100)).appendTo('#otherboard');
                             $('h17').fadeTo(200, 1);
 
                             //player2 score bar
@@ -953,14 +974,14 @@
 
                         })
                         //add time left
-                        $(document.createElement('h4')).text("TIME LEFT").css({ 'font-size': '15px', 'text-align': 'center', 'height': '5px', 'left': '530px', 'opacity': '0', 'top': '10px', 'font-weight': '600' }).appendTo('#timetext');
+                        $(document.createElement('h4')).text("TIME LEFT").appendTo('#frame');
 
                         //$(document.createElement('div')).addClass('choice-box').attr('id', 'submitbutton').text('Check Answer').css({'font-weight':700,'color':'#222','padding':'30px 0'}).appendTo('#frame');
 
                         //$(document.createElement('h3')).css({ 'text-align': 'bottom', 'font-size': '2em', 'top': '200px', 'right': '200px' }).text(Math.round(score / quiz.length * 100)).insertAfter('#question');
 
                         //add timer count
-                        $(document.createElement('h9')).css({ 'font-size': '1.8em', 'text-align': 'center', 'left': '600px', 'opacity': '0', 'font-weight': '700' }).text(timer).appendTo('#submitbutton');
+                        $(document.createElement('h9')).text(timer).appendTo('#frame');
 
 
                         $('#scoreboard').fadeTo(3000, 1);
@@ -1007,25 +1028,28 @@
 
                 category.play();
                 //category image holder
-                $(document.createElement('img')).addClass('init-hut').attr('src', categoryImage).appendTo('#frame');
 
                 //add first question
                 $.getJSON(targetid, function (data) {
+                   power =  data.quiz[currentquestion]['tag'];
                     var required = currentquestion;
                     if (currentquestion >= 0) {
                         required++;
-                        $(document.createElement('h')).css({ 'font-size': '3.2em', 'top': '220px', 'left': '560px', 'color': '#993232' }).text("ROUND "+required).appendTo('#frame');
-                        $(document.createElement('wert')).addClass('wert').attr('id', 'wert').css({ 'font-size': '1.7em Gotham SSm B', 'opacity': '1', 'top': '520px', 'left': '480px' }).text('Question ' + required + ' of ' + data.quiz.length).appendTo('#frame');
+
+
+
+                        $(document.createElement('j')).addClass('poer').attr('id', 'poer').text("ROUND " + required).appendTo('#frame');
+                        
                     }
 
                     if (required == 1) {
                         required++;
-                        $('h').empty();
-                        $(document.createElement('h')).css({ 'font-size': '3.2em', 'top': '220px', 'left': '515px', 'color': '#017d46' }).text("FIRST ROUND").appendTo('#frame');
+                        $('j').empty();
+                        $(document.createElement('j')).addClass('poer').attr('id', 'poer').text("FIRST ROUND").appendTo('#frame');
 
                     } else if (required == data.quiz.length) {
-                        $('h').empty();
-                        $(document.createElement('h')).css({ 'font-size': '3.2em', 'top': '220px', 'left': '490px', 'color': '#017d46' }).text("BONUS ROUND").appendTo('#frame');
+                        $('j').empty();
+                        $(document.createElement('j')).addClass('poer').attr('id', 'poer').text("BONUS ROUND").appendTo('#frame');
 
                     }
 
@@ -1035,7 +1059,7 @@
                     //$('#pager').empty();
                     $('wert').fadeTo(200, 0);
 
-                    $('h').fadeTo(200, 0);
+                    $('j').fadeTo(200, 0);
 
                     if (started == true) {
                         init();
@@ -1077,14 +1101,14 @@
                 currentquestion = 0, score2 = 0, droidchose = 0, selected = false, score = 0, submt = true, timer = 10, started = true, picked, player1score=0, player2score=0;
 
                 //add line
-                $(document.createElement('h8')).addClass('wert').attr('id', 'wert').css({ 'font-size': '2em Gotham SSm B', 'opacity': '1', 'width': '0px', 'top': '320px', 'left': '0px' }).appendTo('#frame');
+                $(document.createElement('h8')).addClass('wert').attr('id', 'wert').css({ 'font-size': '2em Gotham SSm B', 'opacity': '1', 'width': '0px', 'left': '0px' }).appendTo('#frame');
 
 
                 //player backimage holder
                 $(document.createElement('img')).addClass('back-mage').attr('src', playerBackImage).appendTo('#frame');
 
                 //add player name and details
-                $(document.createElement('h')).addClass('matt').attr('id', 'matt').css({ 'font-size': '6em Gotham SSm B', 'opacity': '0', 'top': '170px', 'right': '0px' }).text(playerName).appendTo('#frame');
+                $(document.createElement('i')).addClass('matt').attr('id', 'matt').css({ 'font-size': '6em Gotham SSm B', 'opacity': '0', 'top': '170px'}).text(playerName).appendTo('#frame');
 
                 //player image holder
                 $(document.createElement('img')).addClass('init-mage').attr('src', playerImage).appendTo('#frame');
@@ -1095,16 +1119,13 @@
                 $(document.createElement('img')).addClass('back-rob').attr('src', robotBackImage).appendTo('#frame');
 
                 //add robot name and details
-                $(document.createElement('g')).addClass('glat').attr('id', 'glat').css({ 'font-size': '6em Gotham SSm B', 'opacity': '0', 'top': '480px', 'right': '1256px' }).text(robotName).appendTo('#frame');
+                $(document.createElement('g')).addClass('glat').attr('id', 'glat').css({ 'font-size': '6em Gotham SSm B', 'opacity': '0', 'top': '480px' }).text(robotName).appendTo('#frame');
 
                 //robot image holder
                 $(document.createElement('img')).addClass('init-bot').attr('src', robotImage).appendTo('#frame');
 
-
-
-
-                $(document.createElement('yu')).appendTo('#frame');
-
+                //$(document.createElement('span')).addClass('circle-edu').attr('id', 'circle-edu').appendTo('#frame');
+                $(document.createElement('h30')).appendTo('#frame');
                 //logo
                 $(document.createElement('us')).appendTo('#frame');
 
@@ -1112,7 +1133,7 @@
                     $("h8").animate({
 
 
-                        width: '1365px',
+                        width: '2600px',
 
                         opacity: '1',
 
@@ -1123,24 +1144,22 @@
                 function animatethis() {
 
 
-                    $("yu").animate({
+                    $("h30").animate({
 
 
                         width: '125px',
                         height: '125px',
-                        top: '250px',
-                        bottom: '250px',
+                        
                         opacity: '1'
 
                     }, 450, function () {
 
-                        $("yu").animate({
+                        $("h30").animate({
 
 
                             width: '100px',
                             height: '100px',
-                            top: '250px',
-                            bottom: '250px',
+                            
                             opacity: '1'
 
                         }, 450, function () {
@@ -1152,21 +1171,28 @@
                 }
                 animatethis();
 
+                //add waiting text
+                $(document.createElement('y')).text('GATHERING QUESTIONS').appendTo('#frame');
+
                 setTimeout(function () {
 
-
+                    $('y').fadeTo(10, 0);
 
                     $("img.init-mage").animate({
                         opacity: 1,
-                        right: "+=1200",
+                        right: "+=1000",
 
                     }, 1000, function () {
                         // Animation complete.
                     });
 
-                    $("img.back-mage").animate({
+if (navigator.userAgent.search("MSIE") >= 0){
+
+
+
+                $("img.back-mage").animate({
                         opacity: 1,
-                        top: "+=410",
+                        top: "+=230",
 
                     }, 500, function () {
                         // Animation complete.
@@ -1174,21 +1200,132 @@
 
                     $("img.back-rob").animate({
                         opacity: 1,
-                        top: "-=880",
+                        bottom: "+=525",
 
                     }, 500, function () {
                         // Animation complete.
                     });
 
+   
+                   }
+else if (navigator.userAgent.search("Chrome") >= 0){
+
+
+
+                  $("img.back-mage").animate({
+                        opacity: 1,
+                        top: "+=780",
+
+                    }, 500, function () {
+                        // Animation complete.
+                    });
+
+                    $("img.back-rob").animate({
+                        opacity: 1,
+                        bottom: "+=725",
+
+                    }, 500, function () {
+                        // Animation complete.
+                    });
+
+
+}
+else if (navigator.userAgent.search("Firefox") >= 0){
+
+
+                     $("img.back-mage").animate({
+                        opacity: 1,
+                        top: "+=814",
+
+                    }, 500, function () {
+                        // Animation complete.
+                    });
+
+                    $("img.back-rob").animate({
+                        opacity: 1,
+                        bottom: "+=692",
+
+                    }, 500, function () {
+                        // Animation complete.
+                    });
+
+    
+}
+else if (navigator.userAgent.search("Edge") >= 0 && navigator.userAgent.search("Chrome") < 0){//<< Here
+
+
+             $("img.back-mage").animate({
+                        opacity: 1,
+                        top: "+=380",
+
+                    }, 500, function () {
+                        // Animation complete.
+                    });
+
+                    $("img.back-rob").animate({
+                        opacity: 1,
+                        bottom: "+=725",
+
+                    }, 500, function () {
+                        // Animation complete.
+                    });
+
+   
+}
+else if (navigator.userAgent.search("Opera") >= 0){
+
+
+                 $("img.back-mage").animate({
+                        opacity: 1,
+                        top: "+=780",
+
+                    }, 500, function () {
+                        // Animation complete.
+                    });
+
+                    $("img.back-rob").animate({
+                        opacity: 1,
+                        bottom: "+=425",
+
+                    }, 500, function () {
+                        // Animation complete.
+                    });
+
+
+}
+else{
+
+     $("img.back-mage").animate({
+                        opacity: 1,
+                        top: "+=770",
+
+                    }, 500, function () {
+                        // Animation complete.
+                    });
+
+                    $("img.back-rob").animate({
+                        opacity: 1,
+                        bottom: "+=634",
+
+                    }, 500, function () {
+                        // Animation complete.
+                    });
+
+
+}
+
+
+               
+                   
                     $("img.init-bot").animate({
                         opacity: 1,
-                        left: "+=1200",
+                        left: "+=1000",
 
                     }, 1000, function () {
                         // Animation complete.
                     });
 
-                    $("#matt").animate({
+                    $("i.matt").animate({
                         opacity: 1,
                         right: "+=670",
                         width: '400px'
@@ -1198,22 +1335,21 @@
 
                     $("g.glat").animate({
                         opacity: 1,
-                        left: "+=780",
+                        left: "+=670",
                         width: '400px'
                     }, 1000, function () {
                         // Animation complete.
                     });
                 }, 2000)
 
-                //add waiting text
-                $(document.createElement('loader')).addClass('loader').attr('id', 'loader').css({ 'font-size': '4em Gotham SSm A', 'font-family': 'Goudy Stout', 'opacity': '1', 'top': '590px', 'left': '480px' }).text('GATHERING QUESTIONS').appendTo('#frame');
+               
                 setTimeout(function () {
 
                     //$('#pager').empty();
                     swishe.play();
-                    $('yu').stop();
+                    $('h30').stop();
                     $('#loader').fadeTo(10, 0);
-                    $("yu").animate({
+                    $("h30").animate({
 
 
                         width: '100%',
@@ -1234,10 +1370,10 @@
 
 
 
-                        $('yu').fadeTo(300, 0);
+                        $('h30').fadeTo(300, 0);
 
 
-                        setTimeout(function () { $('yu').remove(); showCategory() }, 500);
+                        setTimeout(function () { $('h30').remove(); showCategory() }, 500);
                     });
 
 
@@ -1245,7 +1381,7 @@
 
                 setTimeout(function () {
                     $('#wert').remove();
-                    $('h').remove();
+                    $('i.matt').remove();
                     $('us').remove();
                     $("img.init-mage").remove();
                     $("img.back-mage").remove();
@@ -1264,6 +1400,8 @@
 
     });
     </script>
+
+    <link href="game.css" rel="stylesheet" type="text/css" media="all" />
 
 </head>
 <body>
