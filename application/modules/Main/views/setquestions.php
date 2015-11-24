@@ -105,7 +105,34 @@ $(document).ready(function(c) {
         <div style="margin-left: 10px;">
             <span id="upform">
                 <form method="post" action="<?= site_url('Main/Uploadpage/upload') ?>" style="margin-top: 15px;">
-                    
+                    <fieldset class="upForm">
+                        <select>
+                            <option value="Art">Art</option>
+                            <option value="Movie">Movie</option>
+                            <option value="Football">Football</option>
+                            <option value="Science">Science</option>
+                        </select><br />
+
+                        Question:<br>
+                        <input type="text" width="600" height="400">
+                        <br>
+                        OptionA:<br>
+                        <input type="text">
+                        <br><br>
+                        OptionB:<br>
+                        <input type="text">
+                        <br><br>
+                        OptionC:<br>
+                        <input type="text">
+                        <br><br>
+                        OptionD:<br>
+                        <input type="text">
+                        <br><br>
+                        Answer:<br>
+                        <input type="text">
+                        <br><br>
+                        <!-- <input type="submit" value="Submit"> -->
+                    </fieldset>
                 </form>
             </span>
         </div>
