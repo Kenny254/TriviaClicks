@@ -29,8 +29,6 @@
 
 
 
-
-
     /******* No need to edit below this line *********/
      var currentquestion = 0, score2 = 0, droidchose = 0, points = 0, selected = false, score = 0, submt = true, timer = 30, started = true, picked, player1score=0, player2score=0;
 
