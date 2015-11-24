@@ -3,7 +3,7 @@ jQuery(document).ready(function($){
 
 	$('#quesnumok').click(function() {
 		var options = "";
-		var options1 = "<br><input type='submit' value='Submit'><br><br>";
+		var options1 = "<input type='submit' value='Submit'><br><br>";
 		var number = parseInt($('#numques').val(), 10);
 		//alert(number);
         for (var i = 0; i < number; i++) {
