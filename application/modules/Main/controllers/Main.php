@@ -52,9 +52,4 @@ class Main extends CI_Controller {
 		return array('loginUrl' => $loginurl, 
 					);
 	}
-
-	public function test()
-	{
-		echo "hello, it is me :)....(In Adele's voice...)";
-	}
 }
