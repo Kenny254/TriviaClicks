@@ -31,9 +31,6 @@ class Uploadpage extends CI_Controller {
 	}
 	public function index()
 	{ 
-		// $testObject = ParseObject::create("TestObject");
-		// $testObject->set("foo", "bar");
-		// $testObject->save();
 		$info = $this->header();	
 		$this->load->view('setquestions', $info, false);
 	}

@@ -12,6 +12,7 @@ jQuery(document).ready(function($){
         $('#upform').show();
         $('.upForm').html(options);
         $('.upForm').append(options1);
+        
 	});
 
 });
