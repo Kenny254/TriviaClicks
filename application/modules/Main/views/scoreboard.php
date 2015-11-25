@@ -130,9 +130,9 @@ $(document).ready(function() {
                     <td>NG</td>
                     <td><img class="img-circle" height="27" width="27" src="<?= $val['picture'] ?>"></td>
                     <td><?= $val['name'] ?></td>
-                    <td><?= $val['points'] ?></td>
+                    <td><?= (empty($val['points']))? '0' : $val['points'] ?></td>
                     <td><?= $val['difficulty'] ?></td>
-                    <td><?= $val['cash'] ?></td>
+                    <td><?= (empty($val['cash']))? 'N 0' : $val['cash'] ?></td>
                 </tr>
             <?php } ?>
         </tbody>
