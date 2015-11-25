@@ -28,17 +28,30 @@ class Scoreboard extends CI_Controller {
 		ParseClient::setStorage( new ParseSessionStorage() );
 		$currentUser = ParseUser::getCurrentUser();
 		if($currentUser){
-			//redirect('Main/Profile', 'refresh');
-			$this->load->view('scoreboard', false);
+			$scoreboardDetails = $this->header();
+			$this->load->view('scoreboard', $scoreboardDetails, false);
 		}else{
-			//$sendLogin = $this->header($loginUrl);
-			$this->load->view('scoreboard', false);
+			redirect('Main/Main','refresh');
 		}
 	}
 
-	// public function header($loginurl)
-	// {
-	// 	return array('loginUrl' => $loginurl, 
-	// 				);
-	// }
+	public function header()
+	{
+		$query = ParseUser::query();
+		$query->descending("points"); 
+		$results = $query->find();
+		$userInfo = [];
+		for ($i=0; $i < count($results); $i++) { 
+			$object = $results[$i];
+			$userInfo[] = ['picture' => $object->get('picture'),
+						   'name' => $object->get('fullName'),
+						   'points' => $object->get('points'),
+						   'difficulty' => $object->get('difficulty'),
+						   'cash' => $object->get('cash'),
+						  ];
+		}
+		return ['userInfo' => $userInfo,
+		
+			   ];
+	}
 }

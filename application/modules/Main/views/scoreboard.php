@@ -120,16 +120,21 @@ $(document).ready(function() {
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>NG</td>
-                <td>Image</td>
-                <td>Nigerian Name</td>
-                <td>250,400</td>
-                <td>Intermediate</td>
-                <td>₦320,800</td>
-            </tr>
-          
+            <?php 
+            $rank = 0;
+            foreach ($userInfo as $val) {
+                $rank++
+            ?>
+                <tr>
+                    <td><?= $rank ?></td>
+                    <td>NG</td>
+                    <td><img class="img-circle" height="27" width="27" src="<?= $val['picture'] ?>"></td>
+                    <td><?= $val['name'] ?></td>
+                    <td><?= $val['points'] ?></td>
+                    <td><?= $val['difficulty'] ?></td>
+                    <td><?= $val['cash'] ?></td>
+                </tr>
+            <?php } ?>
         </tbody>
     </table>
 
