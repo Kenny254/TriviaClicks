@@ -65,9 +65,9 @@ class Uploadpage extends CI_Controller {
 			// $fileToUpload = $filePath . '/'.$_FILES['upload']['name']['file'];
 			// $imageId = $upload['image'];
 			// //$fileToUpload = $upload['file'];
-			// $fileName = $imageId.'.json';
 			// $quesnum = (int)$upload['quesnum'];
-			$imageId = $upload['imageId'];
+			$imageId = $upload['gameId'];
+			$fileName = $imageId.'.json';
 			$question = $upload['question'];
 			$answer = $upload['answer'];
 			$optiona = $upload['optiona'];
@@ -142,8 +142,9 @@ class Uploadpage extends CI_Controller {
 			}
 			$array = ['quiz' => $finalArray,
 				       ];
-			var_dump(json_encode($array));
-			exit;
+			$fileToUpload = json_encode($array);
+			// var_dump($fileToUpload);
+			// exit;
 
 			$status1 = true;
 
@@ -158,7 +159,7 @@ class Uploadpage extends CI_Controller {
 				notify('danger', $assignBeacParse['parseMsg'], 'Main/Uploadpage');
 			}else{
 				echo "Please wait, we'll take you back to the dashboard right away...";
-				notify('success', 'Image Uploaded Succesfully', 'Main/Uploadpage');
+				notify('success', 'Question Uploaded Succesfully', 'Main/Uploadpage');
 			}
 
 

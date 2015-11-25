@@ -28,8 +28,8 @@ class Imagequery_model extends CI_Model {
 
     public function doUpload($imageId, $fileToUpload, $fileName)
     {
-        $localFilePath = $fileToUpload;
-        $file = ParseFile::createFromFile($localFilePath, $fileName);
+        //$localFilePath = $fileToUpload;
+        $file = ParseFile::createFromData($fileToUpload, $fileName);
 
         $image = new ParseObject("Images", $imageId);
         $image->set("game", $file);
