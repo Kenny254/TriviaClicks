@@ -38,8 +38,10 @@
 
 
 
+
+
     /******* No need to edit below this line *********/
-     var currentquestion = 0, score2 = 0, droidchose = 0, points = 0, selected = false, score = 0, submt = true, timer = 30, started = true, picked, player1score=0, player2score=0;
+     var currentquestion = 0, allowing = true, score2 = 0, droidchose = 0, points = 0, selected = false, score = 0, submt = true, timer = 30, started = true, picked, player1score=0, player2score=0;
 
     jQuery(document).ready(function ($) {
 
@@ -114,6 +116,10 @@
 
             var thatImage = "../../../assets/gameimages/round.png";
 
+            var starImage1 = "../../../assets/gameimages/star_01.png";
+            var starImage2 = "../../../assets/gameimages/star_01.png";
+            var starImage3 = "../../../assets/gameimages/star_01.png";
+
             var bonusImage = "../../../assets/gameimages/bonus.png";
 
             var winImage = "../../../assets/gameimages/win.png";
@@ -127,23 +133,31 @@
 
         
 
-        var targetid = $('.game').val();
+            var targetid = $('.game').val();
 
+            $.getJSON(targetid, function (data) {
+                number = Math.round(Math.random() * (data.quiz.length - 1)) + 0;
+            });
 
         var Difficulty = $('.difficulty').val();
 
+        var firstTime = true;
 
         var categoryImage = "../../../assets/gameimages/logo.png"
 
-        var tapSound = document.createElement('audio');
-        var startSound = document.createElement('audio');
-        var backgroundSound = document.createElement('audio');
-        var badSound = document.createElement('audio');
-        var goodSound = document.createElement('audio');
-        var category = document.createElement('audio');
-        var swishe = document.createElement('audio');
-        var won = document.createElement('audio');
-        var lost = document.createElement('audio');
+        tapSound = document.createElement('audio');
+        startSound = document.createElement('audio');
+        backgroundSound = document.createElement('audio');
+        badSound = document.createElement('audio');
+        goodSound = document.createElement('audio');
+        category = document.createElement('audio');
+        swishe = document.createElement('audio');
+        won = document.createElement('audio');
+        lost = document.createElement('audio');
+
+        win1 = document.createElement('audio');
+        win2 = document.createElement('audio');
+        win3 = document.createElement('audio');
 
         tapSound.setAttribute('src', '../../../assets/gameimages/TapSound.ogg');
         startSound.setAttribute('src', '../../../assets/gameimages/Start.ogg');
@@ -155,6 +169,9 @@
         won.setAttribute('src', '../../../assets/gameimages/Cheers.mp3');
         lost.setAttribute('src', '../../../assets/gameimages/Game_over_1.mp3');
 
+        win1.setAttribute('src', '../../../assets/gameimages/Star_win_01.mp3');
+        win2.setAttribute('src', '../../../assets/gameimages/Star_win_02.mp3');
+        win3.setAttribute('src', '../../../assets/gameimages/Star_win_03.mp3');
     
 
        $.get();
@@ -297,9 +314,6 @@
                         
 
                         $("img.any-image").animate({
-
-                            height: '150px',
-                            width: '150px',
 
 
 
@@ -453,13 +467,31 @@
                 return this;
             }
 
+
+
+
+
             /**
              * Resets all of the fields to prepare for next question
              */
             function nextQuestion() {
+
+                $.getJSON(targetid, function (data) {
+                    number = Math.round(Math.random() * (data.quiz.length - 1)) + 0;
+                });
+
                 droidchose = 0;
                 selected = false;
+                if (!firstTime) {
+                    if (allowing) {
+                        allowing = false;
+                        $.getJSON(targetid, function (data) {
+                            currentquestion = number;
+                        })
+                    } else {
 
+                    }
+                }
                 clearInterval(myVar);
                
                 $('img.init-hut').remove();
@@ -485,7 +517,12 @@
 
                 $('h3').fadeTo(600, 1);
                 $.getJSON(targetid, function (data) {
-                    addChoices(data.quiz[currentquestion]['choices']);
+                    if (firstTime) {
+                        addChoices(data.quiz[currentquestion]['choices']);
+                    } else {
+                        addChoices(data.quiz[currentquestion]['choices']);
+
+                    }
                 })
             }
             /**
@@ -638,12 +675,12 @@
                             $.getJSON(targetid, function (data) {
                                 currentquestion++;
                                 if (currentquestion == data.quiz.length) {
-                                    var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(300, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('lu').fadeTo(300, 0); }, 2500);
-                                    setTimeout(endQuiz, 3000);
+                                    var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(300, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2000);
+                                    setTimeout(endQuiz, 2500);
                                 } else {
                                     allowed = true;
-                                    var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(300, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('lu').fadeTo(300, 0); }, 2500);
-                                    var ty = setTimeout(function () { showCategory(); }, 3000);
+                                    var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(300, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2000);
+                                    var ty = setTimeout(function () { showCategory(); }, 2500);
 
                                 }
 
@@ -698,6 +735,7 @@
                     won.play();
 
                     points = 10;
+
                     $.ajax({
                         url: '../givePoints/'+points,
                         type: 'GET',
@@ -709,14 +747,81 @@
                         }
                     });
 
+                    //any star1 holder
+                    $(document.createElement('img')).addClass('star1-image').css({ 'opacity': '0' }).attr('src', starImage2).appendTo('#frame');
+                    $(document.createElement('img')).addClass('star2-image').css({ 'opacity': '0' }).attr('src', starImage1).appendTo('#frame');
+                    $(document.createElement('img')).addClass('star3-image').css({ 'opacity': '0' }).attr('src', starImage3).appendTo('#frame');
+
+
+                    var newscore = 1;
+
+                    $(document.createElement('j1')).text('+' + newscore).appendTo('#frame');
+
+                    function setScoreTrans() {
+                        $('j1').empty();
+
+
+                        newscore++;
+
+                        if (newscore == 10) {
+                            clearInterval(theVar);
+                          
+                        }
+
+
+
+                        // player 1 score
+                        $(document.createElement('j1')).text('+' + newscore).appendTo('#frame');
+
+
+                    }
+
+
+                    theVar = setInterval(setScoreTrans, 100);
+
+                    setTimeout(function () { clearInterval(theVar) }, 1200);
+                    
+
+                    var qust = setTimeout(function () {
+                        win1.play();
+                    $("img.star1-image").animate({
+
+
+                        width: '110px',
+                        height: '100px',
+
+                        opacity: '1',
+                    }, 350, function () {
+                        win2.play();
+                        $("img.star2-image").animate({
+
+
+                            width: '110px',
+                            height: '100px',
+
+                            opacity: '1',
+                        }, 550, function () {
+                            win3.play();
+                            $("img.star3-image").animate({
+
+
+                                width: '110px',
+                                height: '100px',
+
+                                opacity: '1',
+                            }, 350, function () { })
+                        })
+                    })
+                    }, 500);
+
+
                     //any image holder
                     $(document.createElement('img')).addClass('win-image').attr('src', winImage).appendTo('#frame');
 
                     $("img.win-image").animate({
 
-                        height: '280px',
-                        width: '280px',
-                        top: '140',
+                       
+                        top: '140px',
 
 
                         opacity: '1',
@@ -735,9 +840,8 @@
 
                     $("img.lose-image").animate({
 
-                        height: '280px',
-                        width: '230px',
-                        top: '140',
+                      
+                        top: '140px',
 
 
                         opacity: '1',
@@ -751,9 +855,8 @@
 
                     $("img.draw-image").animate({
 
-                        height: '280px',
-                        width: '330px',
-                        top: '140',
+                      
+                        top: '140px',
 
 
                         opacity: '1',
@@ -793,6 +896,7 @@
                     $('last').off('mouseout mouseover');
                     $('last').css({ 'background-color': '#193e38', 'color': 'white' });
                     setTimeout(showStart, 700);
+                   // firstTime = false;
 
                 })
                 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -802,15 +906,17 @@
                     $('rty').off('mouseout mouseover');
                     $('rty').css({ 'background-color': '#641111', 'color': 'white' });
                     setTimeout(showStart, 700);
+                   // firstTime = false;
 
                 })
 
+               
                 // player 1 score
                 $(document.createElement('y6')).text(player1score).appendTo('#frame');
 
                 $("y6").animate({
 
-                    left: '10%',
+                    left: '5%',
 
 
 
@@ -824,7 +930,7 @@
 
                 $("img.init-mages").animate({
 
-                    left: '10%',
+                    left: '5%',
 
 
 
@@ -860,6 +966,7 @@
                     opacity: '1',
                 }, 750, function () { })
 
+              
 
             }
 
@@ -894,12 +1001,12 @@
 
                         //$(document.createElement('li')).addClass('choice choice-box').attr('data-index', 0).css({ 'background-color': '#1b1a1a', 'width': '30px', 'height': '7px', 'padding': '15px 0', 'opacity': '1', 'top': '422px', 'bottom': '400px', 'right': '320px', 'left': '1000px' }).appendTo('#choice-block');
 
-                    } else if (chances == 3) {
+                    } else if (chances == 2) {
                         droidchose = 2;
 
                         $('h16').stop();
                         //$(document.createElement('lu')).addClass('choice choice-box').attr('data-index', 1).css({ 'background-color': '#1b1a1a', 'width': '30px', 'height': '7px', 'padding': '15px 0', 'opacity': '1', 'top': '422px', 'bottom': '400px', 'left': '340px' }).appendTo('#choice-block');
-                    } else if (chances == 5) {
+                    } else if (chances == 3) {
                         droidchose = 3;
 
                         $('h16').stop();
@@ -950,12 +1057,12 @@
                                 $.getJSON(targetid, function (data) {
                                     currentquestion++;
                                     if (currentquestion == data.quiz.length) {
-                                        var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('lu').fadeTo(300, 0); }, 2500);
-                                        setTimeout(endQuiz, 3000);
+                                        var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2000);
+                                        setTimeout(endQuiz, 2500);
                                     } else {
                                         allowed = true;
-                                        var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('lu').fadeTo(300, 0); }, 2500);
-                                        var ty = setTimeout(function () { showCategory(); }, 3000);
+                                        var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2000);
+                                        var ty = setTimeout(function () { showCategory(); }, 2500);
 
                                     }
 
@@ -999,7 +1106,7 @@
              */
             function init(){
                 started = false;
-
+              
                
                     backgroundSound.play();
 
@@ -1050,15 +1157,23 @@
                 //add pager and questions
                 $.getJSON(targetid, function (data) {
                     if (typeof data.quiz !== "undefined" && $.type(data.quiz) === "array") {
-
+                       
+                        //window.alert(data.quiz.length)
                         //myVar = setInterval(function () { runTimer() }, 1000);
                         //add pager
                        // $(document.createElement('img')).addClass('question-image').attr('id', 'question-image').attr('src', quiz[0]['image']).attr('alt', htmlEncode(quiz[0]['question'])).appendTo('#frame');
                         // $(document.createElement('p')).addClass('pager').attr('id','pager').text('Question 1 of ' + quiz.length).appendTo('#frame');
                         //add first question
                         $.getJSON(targetid, function (data) {
-                            $(document.createElement('h2')).addClass('question').attr('id', 'question').text(data.quiz[0]['question']).appendTo('#frame');
-                            //add image if present
+                            if (firstTime) {
+                                currentquestion = number
+                                $(document.createElement('h2')).addClass('question').attr('id', 'question').text(data.quiz[number]['question']).appendTo('#frame');
+                                //add image if present
+                            } else {
+                                currentquestion = number
+                                $(document.createElement('h2')).addClass('question').attr('id', 'question').text(data.quiz[number]['question']).appendTo('#frame');
+
+                            }
                         })
 
 
@@ -1067,9 +1182,7 @@
 
                         $("img.any-image").animate({
 
-                            height: '150px',
-                            width: '150px',
-
+                          
 
 
                             opacity: '1',
@@ -1090,7 +1203,11 @@
 
 
                         $.getJSON(targetid, function (data) {
-                            addChoices(data.quiz[0]['choices']);
+                            if (firstTime) {
+                                addChoices(data.quiz[currentquestion]['choices']);
+                            } else {
+                                addChoices(data.quiz[currentquestion]['choices']);
+                            }
                         })
                         $.getJSON(targetid, function (data) {
                             //player 1 score
@@ -1334,7 +1451,7 @@
                 $('#scoreboard').empty();
 
                 //alert (data.item1+" "+data.item2+" "+data.item3); //further debug
-                currentquestion = 0, score2 = 0, droidchose = 0, selected = false, score = 0, submt = true, timer = 10, started = true, picked, player1score=0, player2score=0;
+                currentquestion = 0, allowing = true; score2 = 0, droidchose = 0, selected = false, score = 0, submt = true, timer = 10, started = true, picked, player1score = 0, player2score = 0;
 
                
 

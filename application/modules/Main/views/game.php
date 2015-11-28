@@ -38,6 +38,8 @@
 
 
 
+
+
     /******* No need to edit below this line *********/
      var currentquestion = 0, score2 = 0, droidchose = 0, points = 0, selected = false, score = 0, submt = true, timer = 30, started = true, picked, player1score=0, player2score=0;
 
@@ -52,7 +54,7 @@
         if (trio == 1) {
             var robotBackImage = "http://www.yomommaspace.com/graphics/backgrounds/1/20.jpg";
 
-             
+
             var robotImage = "../../../assets/gameimages/1.png";
 
 
@@ -109,7 +111,7 @@
 
             var playerImage = $('.profilePic').val();
 
-        
+
             var anyImage = "../../../assets/gameimages/character.png";
 
             var thatImage = "../../../assets/gameimages/round.png";
@@ -125,12 +127,34 @@
             var playerBackImage = $('.cover').val();
 
 
-        
-
-        var targetid = $('.game').val();
+            var playerImage = $('.profilePic').val();
 
 
-        var Difficulty = $('.difficulty').val();
+            var anyImage = "../../../assets/gameimages/character.png";
+
+            var thatImage = "../../../assets/gameimages/round.png";
+
+            var starImage1 = "../../../assets/gameimages/star_01.png";
+            var starImage2 = "../../../assets/gameimages/star_01.png";
+            var starImage3 = "../../../assets/gameimages/star_01.png";
+
+            var bonusImage = "../../../assets/gameimages/bonus.png";
+
+            var winImage = "../../../assets/gameimages/win.png";
+
+            var loseImage = "../../../assets/gameimages/lose.png";
+
+            var drawImage = "t../../../assets/gameimages/ie.png";
+
+            var playerBackImage = $('.cover').val();
+
+
+
+
+            var targetid = $('.game').val();
+
+
+            var Difficulty = $('.difficulty').val();
 
 
         var categoryImage = "../../../assets/gameimages/logo.png"
@@ -145,6 +169,10 @@
         var won = document.createElement('audio');
         var lost = document.createElement('audio');
 
+        win1 = document.createElement('audio');
+        win2 = document.createElement('audio');
+        win3 = document.createElement('audio');
+
         tapSound.setAttribute('src', '../../../assets/gameimages/TapSound.ogg');
         startSound.setAttribute('src', '../../../assets/gameimages/Start.ogg');
         backgroundSound.setAttribute('src', '../../../assets/gameimages/game_music.ogg');
@@ -155,7 +183,11 @@
         won.setAttribute('src', '../../../assets/gameimages/Cheers.mp3');
         lost.setAttribute('src', '../../../assets/gameimages/Game_over_1.mp3');
 
-    
+        win1.setAttribute('src', '../../../assets/gameimages/Star_win_01.mp3');
+        win2.setAttribute('src', '../../../assets/gameimages/Star_win_02.mp3');
+        win3.setAttribute('src', '../../../assets/gameimages/Star_win_03.mp3');
+
+
 
        $.get();
 
@@ -223,42 +255,42 @@
 
 
                     function showButtons() {
-                       
-                        
+
+
                         $("li").animate({
 
                             height: '27px',
                             width: '250px',
-                           
+
 
 
                             opacity: '1',
                         }, 200, function () {
                             // Animation complete.
-                           
+
                             $("lu").animate({
-                               
+
                                 height: '27px',
                                 width: '250px',
-                               
+
                                 opacity: '1',
                             }, 280, function () {
-                              
+
                                 $("la").animate({
 
                                     height: '27px',
                                     width: '250px',
-                                  
-                                    
+
+
                                     opacity: '1',
                                 }, 380, function () {
                                     // Animation complete.
-                                    
+
                                     $("lo").animate({
-                                      
+
                                         height: '27px',
                                         width: '250px',
-                                      
+
 
 
                                         opacity: '1',
@@ -294,12 +326,9 @@
 
                         $('#choice-block').fadeTo(100, 1);
 
-                        
+
 
                         $("img.any-image").animate({
-
-                            height: '150px',
-                            width: '150px',
 
 
 
@@ -461,7 +490,7 @@
                 selected = false;
 
                 clearInterval(myVar);
-               
+
                 $('img.init-hut').remove();
                 $('#question').empty();
                 // $('#explanation').empty();
@@ -530,7 +559,7 @@
                                     setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lu')).addClass('choice-box1').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'lu').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
                                 } else if (data.quiz[currentquestion]['tag'] == 2) {
                                     //window.alert('3');
-                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('li')).addClass('choice-box3').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'la').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
+                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('li')).addClass('choice-box3').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'li').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
                                 } else {
                                     //window.alert('4');
                                     setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lo')).addClass('choice-box4').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'lo').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
@@ -566,15 +595,15 @@
 
 
                 $('.choice').on('click', function () {
-                    
+
                     picked = $(this).attr('data-index');
                     $('.choice').off('mouseout mouseover');
                     $(this).css({ 'background-color': '#226459', 'font-weight': 400, 'text-align': 'center', 'color': '#e8e8e8' });
                     processQuestion(picked);
                     $('.choice').off('click');
 
-                   
-                    
+
+
                     selected = true;
 
 
@@ -632,7 +661,7 @@
                             $('tyu').empty();
                             $("img.any-image").fadeTo(100, 0);
 
-                         
+
 
 
                             $.getJSON(targetid, function (data) {
@@ -668,10 +697,10 @@
 
 
 
-            /**
-             * Quiz ends, display a message.
-             */
-            function endQuiz(){
+        /**
+          * Quiz ends, display a message.
+          */
+            function endQuiz() {
 
                 $('#question').empty();
                 $('#choice-block').empty();
@@ -698,46 +727,102 @@
                     won.play();
 
                     points = 10;
-                    $.ajax({
-                        url: '../givePoints/'+points,
-                        type: 'GET',
-                        success: function(data){
-                           // alert(data);
-                        },
-                        error: function(data){
-                           // alert("Error");
+
+                    //any star1 holder
+                    $(document.createElement('img')).addClass('star1-image').css({ 'opacity': '0' }).attr('src', starImage2).appendTo('#frame');
+                    $(document.createElement('img')).addClass('star2-image').css({ 'opacity': '0' }).attr('src', starImage1).appendTo('#frame');
+                    $(document.createElement('img')).addClass('star3-image').css({ 'opacity': '0' }).attr('src', starImage3).appendTo('#frame');
+
+
+                    var newscore = 1;
+
+                    $(document.createElement('j1')).text('+' + newscore).appendTo('#frame');
+
+                    function setScoreTrans() {
+                        $('j1').empty();
+
+
+                        newscore++;
+
+                        if (newscore == 10) {
+                            clearInterval(theVar);
+
                         }
-                    });
+
+
+
+                        // player 1 score
+                        $(document.createElement('j1')).text('+' + newscore).appendTo('#frame');
+
+
+                    }
+
+
+                    theVar = setInterval(setScoreTrans, 100);
+
+                    setTimeout(function () { clearInterval(theVar) }, 1200);
+
+
+                    var qust = setTimeout(function () {
+                        win1.play();
+                        $("img.star1-image").animate({
+
+
+                            width: '110px',
+                            height: '100px',
+
+                            opacity: '1',
+                        }, 350, function () {
+                            win2.play();
+                            $("img.star2-image").animate({
+
+
+                                width: '110px',
+                                height: '100px',
+
+                                opacity: '1',
+                            }, 550, function () {
+                                win3.play();
+                                $("img.star3-image").animate({
+
+
+                                    width: '110px',
+                                    height: '100px',
+
+                                    opacity: '1',
+                                }, 350, function () { })
+                            })
+                        })
+                    }, 500);
+
 
                     //any image holder
                     $(document.createElement('img')).addClass('win-image').attr('src', winImage).appendTo('#frame');
 
                     $("img.win-image").animate({
 
-                        height: '280px',
-                        width: '280px',
-                        top: '140',
+
+                        top: '140px',
 
 
                         opacity: '1',
                     }, 350, function () { })
 
-                 
-                    
+
+
                     $(document.createElement('j')).addClass('tyup').attr('id', 'tyup').text("YOU WON").appendTo('#frame');
                 } else if (player2score > player1score) {
                     lost.play();
-                    
+
                     $(document.createElement('j')).addClass('tyup').attr('id', 'tyup').text("YOU LOSE").appendTo('#frame');
                     //any image holder
-                   
+
                     $(document.createElement('img')).addClass('lose-image').attr('src', loseImage).appendTo('#frame');
 
                     $("img.lose-image").animate({
 
-                        height: '280px',
-                        width: '230px',
-                        top: '140',
+
+                        top: '140px',
 
 
                         opacity: '1',
@@ -751,9 +836,8 @@
 
                     $("img.draw-image").animate({
 
-                        height: '280px',
-                        width: '330px',
-                        top: '140',
+
+                        top: '140px',
 
 
                         opacity: '1',
@@ -766,51 +850,54 @@
                 $(document.createElement('rty')).addClass('choice choice-box5').attr('data-index', 0).css({ 'opacity': '0' }).text('Not Right Now..').appendTo('#choice-block');
                 $(document.createElement('last')).addClass('choice choice-box6').attr('data-index', 0).css({ 'opacity': '0' }).text('Bring it On').appendTo('#choice-block');
 
-                   
+
                 $("rty").animate({
 
                     height: '30px',
                     width: '230px',
-                           
+
 
 
                     opacity: '1',
                 }, 200, function () {
                     // Animation complete.
-                           
+
                     $("last").animate({
-                               
+
                         height: '30px',
                         width: '230px',
-                               
+
                         opacity: '1',
-                    }, 280, function () {})
+                    }, 280, function () { })
 
                 })
-               
+
 
                 $('last').on('click', function () {
                     $('last').off('mouseout mouseover');
                     $('last').css({ 'background-color': '#193e38', 'color': 'white' });
                     setTimeout(showStart, 700);
+                    // firstTime = false;
 
                 })
                 /////////////////////////////////////////////////////////////////////////////////////////////
-                
+
 
                 $('rty').on('click', function () {
                     $('rty').off('mouseout mouseover');
                     $('rty').css({ 'background-color': '#641111', 'color': 'white' });
                     setTimeout(showStart, 700);
+                    // firstTime = false;
 
                 })
+
 
                 // player 1 score
                 $(document.createElement('y6')).text(player1score).appendTo('#frame');
 
                 $("y6").animate({
 
-                    left: '10%',
+                    left: '5%',
 
 
 
@@ -824,7 +911,7 @@
 
                 $("img.init-mages").animate({
 
-                    left: '10%',
+                    left: '5%',
 
 
 
@@ -861,6 +948,7 @@
                 }, 750, function () { })
 
 
+
             }
 
 
@@ -871,7 +959,7 @@
 
         //Andriod documentation
             function DriodPicks() {
-             
+
                     if (Difficulty == "beginner") {
                         chances = Math.round(Math.random() * (target - 0)) + 1; // generate new time (between 3sec and 500"s)
                     } else if (Difficulty == "intermediate") {
@@ -880,7 +968,7 @@
                         chances = target; // generate new time (between 3sec and 500"s)
                         //window.alert(chances)
                     }
-                
+
                 currentquiz++;
               clearInterval(myFar);
 
@@ -939,11 +1027,11 @@
 
                             })
 
-                            
+
                             function gameEnd() {
                                 $('tyu').empty();
                                 $('iop').empty();
-                               
+
                                 $("img.any-image").fadeTo(100, 0);
 
 
@@ -970,7 +1058,7 @@
 
                     if (droidchose == data.quiz[currentquestion]['tag']) {
                         $("#otherboard").empty();
-                        
+
                         score2++;
                         $(document.createElement('h17')).text(Math.round(score2 / data.quiz.length * 100)).appendTo('#otherboard');
 
@@ -1000,7 +1088,7 @@
             function init(){
                 started = false;
 
-               
+
                     backgroundSound.play();
 
 
@@ -1067,8 +1155,6 @@
 
                         $("img.any-image").animate({
 
-                            height: '150px',
-                            width: '150px',
 
 
 
@@ -1082,7 +1168,7 @@
                         //add timer holder
                         //$(document.createElement('h9')).attr('id', 'submitbutton').appendTo('#frame');
                         //add choices
-                       
+
 
                         $(document.createElement('h3')).attr('id', 'scoreboard').appendTo('#frame');
 
@@ -1158,14 +1244,14 @@
                 $('h16').remove();
                 $('h10').remove();
                 $("img.any-image").fadeTo(10, 0);
-               
+
                 //add player name and details
                 //$(document.createElement('h')).addClass('matt').attr('id', 'matt').css({ 'font-size': '6em Gotham SSm B', 'opacity': '0', 'top': '170px', 'left': '0px' }).text('GENERAL KNOWLEGDE').appendTo('#frame');
-              
+
 
                 category.play();
                 //category image holder
-                
+
 
 
 
@@ -1175,9 +1261,9 @@
                     if (currentquestion >= 0 ) {
                         required++;
                         $('j.poer').empty();
-                       
+
                         //any image holder
-                       
+
 
                         $(document.createElement('j')).addClass('poer').attr('id', 'poer').text("ROUND " + required).appendTo('#frame');
                         $("j.poer").animate({
@@ -1207,7 +1293,7 @@
                         }, 400, function () { })
 
                         //any image holder
-                       
+
                         $(document.createElement('j')).addClass('poer').attr('id', 'poer').text("FIRST ROUND").appendTo('#frame');
                         $("j.poer").animate({
 
@@ -1220,7 +1306,7 @@
                         }, 550, function () { })
                     } else if (required == data.quiz.length) {
                         $('j.poer').empty();
-                      
+
                         $(document.createElement('j')).addClass('poer').attr('id', 'poer').text("BONUS ROUND").appendTo('#frame');
                         //any image holder
                         $(document.createElement('img')).addClass('bonus-image').attr('src', bonusImage).appendTo('#frame');
@@ -1246,7 +1332,7 @@
                         }, 400, function () { })
                     }
 
-                   
+
 
                 })
 
@@ -1254,9 +1340,9 @@
 
 
                     // Animation complete.
-                           
-              
-                    
+
+
+
 
                 setTimeout(function () {
 
@@ -1280,7 +1366,7 @@
 
                         opacity: '0',
                     }, 550, function () { })
-                 
+
                     $("j.poer").animate({
 
                         top: '900px',
@@ -1296,11 +1382,11 @@
                     setTimeout(function () {
                         if (started == true) {
                             init();
-                        
-                        
+
+
                         } else {
-                       
-                     
+
+
                             nextQuestion();
 
                         }
@@ -1326,7 +1412,7 @@
                 $('#frame').empty();
 
 
-                
+
 
                 trio = Math.round(Math.random() * (10 - 5)) + 1; // generate new time (between 3sec and 500"s)
 
@@ -1336,16 +1422,16 @@
                 //alert (data.item1+" "+data.item2+" "+data.item3); //further debug
                 currentquestion = 0, score2 = 0, droidchose = 0, selected = false, score = 0, submt = true, timer = 10, started = true, picked, player1score=0, player2score=0;
 
-               
 
-                
+
+
 
                 //add waiting text
                 $(document.createElement('y')).text('GATHERING QUESTIONS...').appendTo('#frame');
 
                 setTimeout(function () {
 
-                 
+
                     $('y').remove();
                     //player backimage holder
                     $(document.createElement('img')).addClass('bac-mage').attr('src', playerBackImage).appendTo('#frame');
@@ -1399,7 +1485,7 @@
 
                             width: '125px',
                             height: '125px',
-                            
+
                             opacity: '1'
 
                         }, 800, function () {
@@ -1409,7 +1495,7 @@
 
                                 width: '100px',
                                 height: '100px',
-                                
+
                                 opacity: '1'
 
                             }, 800, function () {
@@ -1425,7 +1511,7 @@
                     $("i.matt").animate({
                         opacity: 1,
                         right: "+=70%",
-                       
+
                     }, 1000, function () {
                         // Animation complete.
                     });
@@ -1433,22 +1519,22 @@
                     $("g.glat").animate({
                         opacity: 1,
                         left: "+=70%",
-                        
+
                     }, 1000, function () {
                         // Animation complete.
                     });
                 }, 3000)
 
 
-                
-
-                
-
-             
 
 
-                
-               
+
+
+
+
+
+
+
                 setTimeout(function () {
 
                     //$('#pager').empty();
@@ -1463,11 +1549,11 @@
                         top: '-240px',
                         bottom: '0px',
 
-                      
-                    
+
+
                         left: '-0px',
                         right: '0px',
-                      
+
                         borderRadius: '550px',
                         opacity: '1',
 
@@ -1518,6 +1604,6 @@
     <input class="difficulty" type="hidden" value="<?php echo $difficulty ?>">
     <div id="frame"></div>
 
-   
+
 </body>
 </html>

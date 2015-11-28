@@ -53,13 +53,13 @@ class Ingame extends CI_Controller {
 		$gameObj = new ParseQuery("Images");
 		$result = $gameObj->equalTo("objectId", $gameId)->first();
 		$objectUrl = $result->get('game');
-		$gamepicUrl = $result->get('lilImage');
-		//$gamePic = $gamepicUrl->getUrl();
+		$gamepicUrl = $result->get('image');
+		$gamePic = $gamepicUrl->getUrl();
 		// var_dump($objectUrl->getUrl());
 		// exit;
 		//$url = $objectUrl->fetch();
 		return ['name' => $userName,
-				//'gamePic' => $gamePic,
+				'gamePic' => $gamePic,
 				'coverPhoto' => $coverPhoto,
 				'profilePic' => $profilePic,
 				'gameJson' => $objectUrl->getUrl(),
