@@ -144,7 +144,7 @@
 
             var loseImage = "../../../assets/gameimages/lose.png";
 
-            var drawImage = "t../../../assets/gameimages/ie.png";
+            var drawImage = "../../../assets/gameimages/tie.png";
 
             var playerBackImage = $('.cover').val();
 
