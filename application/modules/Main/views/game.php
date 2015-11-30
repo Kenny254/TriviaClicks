@@ -886,7 +886,8 @@
                 $('rty').on('click', function () {
                     $('rty').off('mouseout mouseover');
                     $('rty').css({ 'background-color': '#641111', 'color': 'white' });
-                    setTimeout(showStart, 700);
+                    window.location.href = $('.topicUrl').val();
+                    // setTimeout(showStart, 700);
                     // firstTime = false;
 
                 })
@@ -1602,6 +1603,7 @@
     <input class="profilePic" type="hidden" value="<?php echo $profilePic ?>">
     <input class="gamePic" type="hidden" value="<?php echo $gamePic ?>">
     <input class="difficulty" type="hidden" value="<?php echo $difficulty ?>">
+    <input class="topicUrl" type="hidden" value="<?php echo site_url('Main/Topics'); ?>">
     <div id="frame"></div>
 
 
