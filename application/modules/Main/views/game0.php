@@ -9,9 +9,10 @@
 
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link href="<?php echo site_url();?>assets/css/game.css" rel="stylesheet" type="text/css" media="all" />
 
-    <script type="text/javascript" src="jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="<?php echo site_url();?>assets/css/maingame.css" rel="stylesheet" type="text/css" media="only screen" />
+    <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="<?php echo site_url();?>assets/css/small-device.css" />
 
     <script>
 
@@ -40,7 +41,7 @@
 
 
     /******* No need to edit below this line *********/
-     var currentquestion = 0, score2 = 0, droidchose = 0, points = 0, selected = false, score = 0, submt = true, timer = 10, started = true, picked, player1score=0, player2score=0;
+     var currentquestion = 0, score2 = 0, droidchose = 0, points = 0, selected = false, score = 0, submt = true, timer = 30, started = true, picked, player1score=0, player2score=0;
 
     jQuery(document).ready(function ($) {
 
@@ -51,16 +52,16 @@
         var trio = Math.round(Math.random() * (10 - 5)) + 1; // generate new time (between 3sec and 500"s)
 
         if (trio == 1) {
-            var robotBackImage = $('.cover').val();
+            var robotBackImage = "http://www.yomommaspace.com/graphics/backgrounds/1/20.jpg";
 
-             
+
             var robotImage = "../../../assets/gameimages/1.png";
 
 
             var robotName = "Hangok";
         } else if (trio == 2) {
 
-            var robotBackImage = $('.cover').val();
+            var robotBackImage = "http://www.freevector.com/site_media/preview_images/FreeVector-Abstract-Background-Graphics.jpg";
 
 
             var robotImage = "../../../assets/gameimages/2.png"
@@ -70,7 +71,7 @@
 
         } else if (trio == 3) {
 
-            var robotBackImage = $('.cover').val();
+            var robotBackImage = "https://image.freepik.com/free-vector/abstract-colorful-background-graphic-artwork-background-vector-set_53-16856.jpg";
 
 
             var robotImage = "../../../assets/gameimages/3.png"
@@ -80,7 +81,7 @@
 
         } else if (trio == 4) {
 
-            var robotBackImage = "http://www.google.com.ng/imgres?imgurl=http://topwalls.net/wallpapers/2012/11/Wallpaper-Picture-Planet-Graphics-900x1600.jpg&imgrefurl=http://topwalls.net/wallpaper-picture-planet-graphics/&h=900&w=1600&tbnid=IfDAje9YGdcW8M:&docid=-9KJuwDr4HqT-M&ei=K7FEVsCiKsOqU4D8kqAF&tbm=isch&ved=0CCYQMygJMAlqFQoTCIDko8Oai8kCFUPVFAodAL4EVA";
+            var robotBackImage = "http://www.freevector.com/site_media/preview_images/FreeVector-Waving-Lines-Background-Graphics.jpg";
 
 
             var robotImage = "../../../assets/gameimages/4.png"
@@ -90,7 +91,7 @@
 
         } else {
 
-            var robotBackImage = "http://www.google.com.ng/imgres?imgurl=http://topwalls.net/wallpapers/2012/05/vector-graphic-graphics-texture-line-color-gramophone-900x1600.jpg&imgrefurl=http://topwalls.net/vector-graphic-graphics-texture-line-color-gramophone/&h=900&w=1600&tbnid=LSFIwWPWm-ic3M:&docid=UJtYL6oZcy7QgM&ei=K7FEVsCiKsOqU4D8kqAF&tbm=isch&ved=0CCAQMygDMANqFQoTCIDko8Oai8kCFUPVFAodAL4EVA";
+            var robotBackImage = "http://www.yomommaspace.com/graphics/backgrounds/1/16.jpg";
 
 
             var robotImage = "../../../assets/gameimages/5.png"
@@ -110,20 +111,53 @@
 
             var playerImage = $('.profilePic').val();
 
-        
+
+            var anyImage = "../../../assets/gameimages/character.png";
+
+            var thatImage = "../../../assets/gameimages/round.png";
+
+            var bonusImage = "../../../assets/gameimages/bonus.png";
+
+            var winImage = "../../../assets/gameimages/win.png";
+
+            var loseImage = "../../../assets/gameimages/lose.png";
+
+            var drawImage = "../../../assets/gameimages/tie.png";
 
             var playerBackImage = $('.cover').val();
 
 
-        
-
-        var targetid = $('.game').val();
+            var playerImage = $('.profilePic').val();
 
 
-        var Difficulty = $('.difficulty').val();
+            var anyImage = "../../../assets/gameimages/character.png";
+
+            var thatImage = "../../../assets/gameimages/round.png";
+
+            var starImage1 = "../../../assets/gameimages/star_01.png";
+            var starImage2 = "../../../assets/gameimages/star_01.png";
+            var starImage3 = "../../../assets/gameimages/star_01.png";
+
+            var bonusImage = "../../../assets/gameimages/bonus.png";
+
+            var winImage = "../../../assets/gameimages/win.png";
+
+            var loseImage = "../../../assets/gameimages/lose.png";
+
+            var drawImage = "../../../assets/gameimages/tie.png";
+
+            var playerBackImage = $('.cover').val();
 
 
-        var categoryImage = $('.gamePic').val();
+
+
+            var targetid = $('.game').val();
+
+
+            var Difficulty = $('.difficulty').val();
+
+
+        var categoryImage = "../../../assets/gameimages/logo.png"
 
         var tapSound = document.createElement('audio');
         var startSound = document.createElement('audio');
@@ -135,17 +169,25 @@
         var won = document.createElement('audio');
         var lost = document.createElement('audio');
 
-        tapSound.setAttribute('src', 'TapSound.ogg');
-        startSound.setAttribute('src', 'Start.ogg');
-        backgroundSound.setAttribute('src', 'game_music.ogg');
-        badSound.setAttribute('src', 'Alert.ogg');
-        goodSound.setAttribute('src', 'Good.mp3');
-        category.setAttribute('src', 'Swishe_banner.ogg');
-        swishe.setAttribute('src', 'Swishe.mp3');
-        won.setAttribute('src', 'Cheers.mp3');
-        lost.setAttribute('src', 'Game_over_1.mp3');
+        win1 = document.createElement('audio');
+        win2 = document.createElement('audio');
+        win3 = document.createElement('audio');
 
-    
+        tapSound.setAttribute('src', '../../../assets/gameimages/TapSound.ogg');
+        startSound.setAttribute('src', '../../../assets/gameimages/Start.ogg');
+        backgroundSound.setAttribute('src', '../../../assets/gameimages/game_music.ogg');
+        badSound.setAttribute('src', '../../../assets/gameimages/Alert.ogg');
+        goodSound.setAttribute('src', '../../../assets/gameimages/Good.mp3');
+        category.setAttribute('src', '../../../assets/gameimages/Swishe_banner.mp3');
+        swishe.setAttribute('src', '../../../assets/gameimages/Swishe.mp3');
+        won.setAttribute('src', '../../../assets/gameimages/Cheers.mp3');
+        lost.setAttribute('src', '../../../assets/gameimages/Game_over_1.mp3');
+
+        win1.setAttribute('src', '../../../assets/gameimages/Star_win_01.mp3');
+        win2.setAttribute('src', '../../../assets/gameimages/Star_win_02.mp3');
+        win3.setAttribute('src', '../../../assets/gameimages/Star_win_03.mp3');
+
+
 
        $.get();
 
@@ -177,16 +219,16 @@
 
 
 
-                    $(document.createElement('li')).addClass('choice choice-box').attr('data-index', 0).text(choices[0]).css({ 'background-color': '#fff', 'width': '330px', 'height': '28px', 'padding': '25px 0', 'opacity': '0', 'top': '400px', 'bottom': '400px', 'right': '320px', 'left': '700px', 'color': '#1b1a1a' }).appendTo('#choice-block');
-                    $(document.createElement('lu')).addClass('choice choice-box').attr('data-index', 1).text(choices[1]).css({ 'background-color': '#fff', 'width': '330px', 'height': '28px', 'padding': '25px 0', 'opacity': '0', 'top': '400px', 'bottom': '400px', 'left': '320px', 'left': '320px', 'color': '#1b1a1a' }).appendTo('#choice-block');
+                    $(document.createElement('li')).addClass('choice choice-box1').attr('data-index', 0).css({ 'opacity': '0' }).text(choices[0]).appendTo('#choice-block');
+                    $(document.createElement('lu')).addClass('choice choice-box2').attr('data-index', 1).css({ 'opacity': '0' }).text(choices[1]).appendTo('#choice-block');
 
-                    $(document.createElement('la')).addClass('choice choice-box').attr('data-index', 2).text(choices[2]).css({ 'background-color': '#fff', 'width': '330px', 'height': '28px', 'padding': '25px 0', 'opacity': '0', 'top': '520px', 'bottom': '520px', 'right': '320px', 'left': '700px', 'color': '#1b1a1a' }).appendTo('#choice-block');
-                    $(document.createElement('lo')).addClass('choice choice-box').attr('data-index', 3).text(choices[3]).css({ 'background-color': '#fff', 'width': '330px', 'height': '28px', 'padding': '25px 0', 'opacity': '0', 'top': '520px', 'bottom': '520px', 'left': '320px', 'left': '320px', 'color': '#1b1a1a' }).appendTo('#choice-block');
+                    $(document.createElement('la')).addClass('choice choice-box3').attr('data-index', 2).css({ 'opacity': '0' }).text(choices[2]).appendTo('#choice-block');
+                    $(document.createElement('lo')).addClass('choice choice-box4').attr('data-index', 3).css({ 'opacity': '0' }).text(choices[3]).appendTo('#choice-block');
 
 
 
                     function runTimer() {
-                        $('#thatshit').empty();
+                        $('h9').empty();
 
 
                         timer--;
@@ -203,7 +245,7 @@
 
 
 
-                        $(document.createElement('h9')).css({ 'font-size': '1.8em Gotham SSm B', 'text-align': 'center',}).text(timer).appendTo('#thatshit');
+                        $(document.createElement('h9')).text(timer).appendTo('#frame');
 
                     }
 
@@ -213,51 +255,46 @@
 
 
                     function showButtons() {
-                       
-                        
+
+
                         $("li").animate({
 
-                            height: '32px',
-                            width: '340px',
-                            right: '320px',
+                            height: '27px',
+                            width: '250px',
 
-                            top: '400px',
-                            bottom: '400px',
+
+
                             opacity: '1',
-                        }, 100, function () {
+                        }, 200, function () {
                             // Animation complete.
-                           
+
                             $("lu").animate({
-                                left: '320px',
-                                height: '32px',
-                                width: '340px',
-                                top: '400px',
-                                bottom: '400px',
+
+                                height: '27px',
+                                width: '250px',
+
                                 opacity: '1',
-                            }, 150, function () {
-                              
+                            }, 280, function () {
+
                                 $("la").animate({
 
-                                    height: '32px',
-                                    width: '340px',
-                                    right: '320px',
-                                    left: '700px',
-                                    top: '520px',
-                                    bottom: '520px',
+                                    height: '27px',
+                                    width: '250px',
+
+
                                     opacity: '1',
-                                }, 200, function () {
+                                }, 380, function () {
                                     // Animation complete.
-                                    
+
                                     $("lo").animate({
-                                        left: '320px',
-                                        height: '32px',
-                                        width: '340px',
-                                        top: '520px',
-                                        bottom: '520px',
+
+                                        height: '27px',
+                                        width: '250px',
+
 
 
                                         opacity: '1',
-                                    }, 250, function () {
+                                    }, 480, function () {
                                         setupButtons();
 
                                         var rand = Math.round(Math.random() * (8000 - 2500)) + 1000; // generate new time (between 3sec and 500"s)
@@ -289,6 +326,14 @@
 
                         $('#choice-block').fadeTo(100, 1);
 
+
+
+                        $("img.any-image").animate({
+
+
+
+                            opacity: '1',
+                        }, 350, function () { })
 
                         $('h10').animate({
                             width:  '-50px'
@@ -448,13 +493,14 @@
 
                 $('img.init-hut').remove();
                 $('#question').empty();
-               // $('#explanation').empty();
+                // $('#explanation').empty();
+
                //player2 progress bar
-                $(document.createElement('h16')).addClass('iop').attr('id', 'iop').css({ 'font-size': '2em Gotham SSm B', 'opacity': '1', 'top': '0px', 'left': '0px' }).appendTo('#frame');
+                $(document.createElement('h16')).addClass('iop').attr('id', 'iop').css({ 'font-size': '2em Gotham SSm B', 'opacity': '1', 'top': '0%', 'left': '0px' }).appendTo('#frame');
 
 
-                        //pprogress bar
-                $(document.createElement('h10')).addClass('tyu').attr('id', 'tyu').css({ 'font-size': '2em Gotham SSm B', 'opacity': '1', 'top': '0px', 'left': '0px' }).appendTo('#frame');
+               //pprogress bar
+                $(document.createElement('h10')).addClass('tyu').attr('id', 'tyu').css({ 'font-size': '2em Gotham SSm B', 'opacity': '1', 'top': '0%', 'left': '0px' }).appendTo('#frame');
 
 
                 $.getJSON(targetid, function (data) {
@@ -499,19 +545,24 @@
 
                     } else {
                         badSound.play();
-                        $('.choice').eq(choice).css({ 'background-color': '#993232', 'text-align': 'center', 'font-color': 'white' });
+                        $('.choice').eq(choice).css({ 'background-color': '#226459', 'text-align': 'center', 'font-color': 'white' });
                         //$('#explanation').html('<strong>Incorrect.</strong> ' + htmlEncode(quiz[currentquestion]['correct']));
                         // $(document.createElement('lo')).addClass('choice choice-box').text(quiz[currentquestion]['correct']).css({ 'background-color': '#fff', 'width': '280px', 'height': '20px', 'padding': '30px 0', 'opacity': '0', 'top': '450px' }).appendTo('#choice-block');
                         if (droidchose >= 1 && selected == true) {
                             $.getJSON(targetid, function (data) {
+
                                 if (data.quiz[currentquestion]['tag'] == 3) {
-                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('la')).addClass('la').attr('id', 'la').text(htmlEncode(data.quiz[currentquestion]['correct'])).css({ 'background-color': '#017d46', 'border-radius': '3px', 'color': 'white', 'width': '340px', 'height': '32px', 'padding': '25px 0', 'opacity': '1', 'top': '520px', 'right': '320px', 'left': '700px' }).appendTo('#choice-block'); }, 1000);
+                                    //window.alert('1');
+                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('la')).addClass('choice-box2').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'la').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
                                 } else if (data.quiz[currentquestion]['tag'] == 1) {
-                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lo')).addClass('lo').attr('id', 'lo').text(htmlEncode(data.quiz[currentquestion]['correct'])).css({ 'background-color': '#017d46', 'border-radius': '3px', 'color': 'white', 'width': '340px', 'height': '32px', 'padding': '25px 0', 'opacity': '1', 'top': '400px', 'right': '320px', 'left': '700px' }).appendTo('#choice-block'); }, 1000);
+                                    //window.alert('2');
+                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lu')).addClass('choice-box1').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'lu').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
                                 } else if (data.quiz[currentquestion]['tag'] == 2) {
-                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('li')).addClass('li').attr('id', 'li').text(htmlEncode(data.quiz[currentquestion]['correct'])).css({ 'background-color': '#017d46', 'border-radius': '3px', 'color': 'white', 'width': '340px', 'height': '32px', 'padding': '25px 0', 'opacity': '1', 'top': '400px', 'right': '700px', 'left': '320px' }).appendTo('#choice-block'); }, 1000);
+                                    //window.alert('3');
+                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('li')).addClass('choice-box3').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'li').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
                                 } else {
-                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lu')).addClass('lu').attr('id', 'lu').text(htmlEncode(data.quiz[currentquestion]['correct'])).css({ 'background-color': '#017d46', 'border-radius': '3px', 'color': 'white', 'width': '340px', 'height': '32px', 'padding': '25px 0', 'opacity': '1', 'top': '520px', 'right': '700px', 'left': '320px' }).appendTo('#choice-block'); }, 1000);
+                                    //window.alert('4');
+                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lo')).addClass('choice-box4').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'lo').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
                                 }
 
                             })
@@ -537,24 +588,22 @@
             function setupButtons() {
 
 
+                $.getJSON(targetid, function (data) {
 
-
-                $('.choice').on('mouseover', function(){
-                    $(this).css({'background-color':'#fff'});
+                    target = (data.quiz[currentquestion]['tag'])
                 });
-                $('.choice').on('mouseout', function(){
-                    $(this).css({'background-color':'#fff'});
-                })
+
+
                 $('.choice').on('click', function () {
-                    
+
                     picked = $(this).attr('data-index');
                     $('.choice').off('mouseout mouseover');
-                    $(this).css({ 'background-color': '#fff', 'font-weight': 700, 'text-align': 'center', 'color': 'white' });
+                    $(this).css({ 'background-color': '#226459', 'font-weight': 400, 'text-align': 'center', 'color': '#e8e8e8' });
                     processQuestion(picked);
                     $('.choice').off('click');
 
-                   
-                    
+
+
                     selected = true;
 
 
@@ -568,12 +617,12 @@
                     $('h10').stop();
 
                     if (droidchose == 0) {
-                         $('h10').fadeTo('100', 0.5, function() {
+                         $('h10').fadeTo('100', 0.2, function() {
 
                          });
 
                     }else{
-                         $('h10').fadeTo('100', 0.5, function() {
+                         $('h16').fadeTo('100', 0.2, function() {
 
                          });
 
@@ -588,26 +637,31 @@
 
 
 
-                           $.getJSON(targetid, function (data) {
-                                if (data.quiz[currentquestion]['tag'] == 3) {
-                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('la')).addClass('la').attr('id', 'la').text(htmlEncode(data.quiz[currentquestion]['correct'])).css({ 'background-color': '#017d46', 'border-radius': '3px', 'color': 'white', 'width': '340px', 'height': '32px', 'padding': '25px 0', 'opacity': '1', 'top': '520px', 'right': '320px', 'left': '700px' }).appendTo('#choice-block'); }, 1500);
-                                } else if (data.quiz[currentquestion]['tag'] == 1) {
-                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lo')).addClass('lo').attr('id', 'lo').text(htmlEncode(data.quiz[currentquestion]['correct'])).css({ 'background-color': '#017d46', 'border-radius': '3px', 'color': 'white', 'width': '340px', 'height': '32px', 'padding': '25px 0', 'opacity': '1', 'top': '400px', 'right': '320px', 'left': '700px' }).appendTo('#choice-block'); }, 1500);
-                                } else if (data.quiz[currentquestion]['tag'] == 2) {
-                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('li')).addClass('li').attr('id', 'li').text(htmlEncode(data.quiz[currentquestion]['correct'])).css({ 'background-color': '#017d46', 'border-radius': '3px', 'color': 'white', 'width': '340px', 'height': '32px', 'padding': '25px 0', 'opacity': '1', 'top': '400px', 'right': '700px', 'left': '320px' }).appendTo('#choice-block'); }, 1500);
-                                } else {
-                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lu')).addClass('lu').attr('id', 'lu').text(htmlEncode(data.quiz[currentquestion]['correct'])).css({ 'background-color': '#017d46', 'border-radius': '3px', 'color': 'white', 'width': '340px', 'height': '32px', 'padding': '25px 0', 'opacity': '1', 'top': '520px', 'right': '700px', 'left': '320px' }).appendTo('#choice-block'); }, 1500);
-                                }
+                        $.getJSON(targetid, function (data) {
 
-                            })
+                            if (data.quiz[currentquestion]['tag'] == 3) {
+                                //window.alert('1');
+                                setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('la')).addClass('choice-box2').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'la').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
+                            } else if (data.quiz[currentquestion]['tag'] == 1) {
+                                //window.alert('2');
+                                setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lu')).addClass('choice-box1').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'lu').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
+                            } else if (data.quiz[currentquestion]['tag'] == 2) {
+                                //window.alert('3');
+                                setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('li')).addClass('choice-box3').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'la').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
+                            } else {
+                                //window.alert('4');
+                                setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lo')).addClass('choice-box4').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'lo').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
+                            }
+
+                        })
 
 
 
                         function gameEnd() {
                             $('tyu').empty();
+                            $("img.any-image").fadeTo(100, 0);
 
 
-                         
 
 
                             $.getJSON(targetid, function (data) {
@@ -643,10 +697,10 @@
 
 
 
-            /**
-             * Quiz ends, display a message.
-             */
-            function endQuiz(){
+        /**
+          * Quiz ends, display a message.
+          */
+            function endQuiz() {
 
                 $('#question').empty();
                 $('#choice-block').empty();
@@ -668,62 +722,233 @@
 
                 $('#submitbutton').empty();
                 $('#scoreboard').empty();
+
                 if (player1score > player2score) {
                     won.play();
 
-                    points = points + 10;
-                    //window.alert(points);
+                    points = 10;
+
+                    //any star1 holder
+                    $(document.createElement('img')).addClass('star1-image').css({ 'opacity': '0' }).attr('src', starImage2).appendTo('#frame');
+                    $(document.createElement('img')).addClass('star2-image').css({ 'opacity': '0' }).attr('src', starImage1).appendTo('#frame');
+                    $(document.createElement('img')).addClass('star3-image').css({ 'opacity': '0' }).attr('src', starImage3).appendTo('#frame');
+
+
+                    var newscore = 1;
+
+                    $(document.createElement('j1')).text('+' + newscore).appendTo('#frame');
+
+                    function setScoreTrans() {
+                        $('j1').empty();
+
+
+                        newscore++;
+
+                        if (newscore == 10) {
+                            clearInterval(theVar);
+
+                        }
+
+
+
+                        // player 1 score
+                        $(document.createElement('j1')).text('+' + newscore).appendTo('#frame');
+
+
+                    }
+
+
+                    theVar = setInterval(setScoreTrans, 100);
+
+                    setTimeout(function () { clearInterval(theVar) }, 1200);
+
+
+                    var qust = setTimeout(function () {
+                        win1.play();
+                        $("img.star1-image").animate({
+
+
+                            width: '110px',
+                            height: '100px',
+
+                            opacity: '1',
+                        }, 350, function () {
+                            win2.play();
+                            $("img.star2-image").animate({
+
+
+                                width: '110px',
+                                height: '100px',
+
+                                opacity: '1',
+                            }, 550, function () {
+                                win3.play();
+                                $("img.star3-image").animate({
+
+
+                                    width: '110px',
+                                    height: '100px',
+
+                                    opacity: '1',
+                                }, 350, function () { })
+                            })
+                        })
+                    }, 500);
+
+
+                    //any image holder
+                    $(document.createElement('img')).addClass('win-image').attr('src', winImage).appendTo('#frame');
+
+                    $("img.win-image").animate({
+
+
+                        top: '140px',
+
+
+                        opacity: '1',
+                    }, 350, function () { })
+
+
+
                     $(document.createElement('j')).addClass('tyup').attr('id', 'tyup').text("YOU WON").appendTo('#frame');
                 } else if (player2score > player1score) {
                     lost.play();
-                    
+
                     $(document.createElement('j')).addClass('tyup').attr('id', 'tyup').text("YOU LOSE").appendTo('#frame');
+                    //any image holder
+
+                    $(document.createElement('img')).addClass('lose-image').attr('src', loseImage).appendTo('#frame');
+
+                    $("img.lose-image").animate({
+
+
+                        top: '140px',
+
+
+                        opacity: '1',
+                    }, 350, function () { })
 
                 } else {
                     $(document.createElement('j')).addClass('tyup').attr('id', 'tyup').text("A TIE").appendTo('#frame');
+                    //any image holder
+
+                    $(document.createElement('img')).addClass('draw-image').attr('src', drawImage).appendTo('#frame');
+
+                    $("img.draw-image").animate({
+
+
+                        top: '140px',
+
+
+                        opacity: '1',
+                    }, 350, function () { })
+
                     badSound.play();
+                    points = 0;
                 }
-                $(document.createElement('rty')).addClass('choice choice-box').attr('data-index', 0).text('Not Right Now..').css({ 'background-color': '#993232', 'text.align': 'center', 'width': '240px', 'left': '750px', 'height': '14px', 'padding': '25px 0', 'opacity': '1', 'top': '390px', 'color': 'white' }).appendTo('#choice-block');
-                $(document.createElement('last')).addClass('choice choice-box').attr('data-index', 0).text('Bring it On').css({ 'background-color': '#017d46', 'text.align': 'center', 'width': '240px', 'right': '750px', 'height': '14px', 'padding': '25px 0', 'opacity': '1', 'top': '390px', 'color': 'white' }).appendTo('#choice-block');
-                $('last').on('mouseover', function(){
-                    $(this).css({ 'background-color': 'lightgreen', 'color': 'white' });
-                });
-                $('last').on('mouseout', function () {
-                    $(this).css({ 'background-color': '#017d46', 'color': 'white' });
+
+                $(document.createElement('rty')).addClass('choice choice-box5').attr('data-index', 0).css({ 'opacity': '0' }).text('Not Right Now..').appendTo('#choice-block');
+                $(document.createElement('last')).addClass('choice choice-box6').attr('data-index', 0).css({ 'opacity': '0' }).text('Bring it On').appendTo('#choice-block');
+
+
+                $("rty").animate({
+
+                    height: '30px',
+                    width: '230px',
+
+
+
+                    opacity: '1',
+                }, 200, function () {
+                    // Animation complete.
+
+                    $("last").animate({
+
+                        height: '30px',
+                        width: '230px',
+
+                        opacity: '1',
+                    }, 280, function () { })
+
                 })
 
+
                 $('last').on('click', function () {
-                    showStart();
+                    $('last').off('mouseout mouseover');
+                    $('last').css({ 'background-color': '#193e38', 'color': 'white' });
+                    setTimeout(showStart, 700);
+                    // firstTime = false;
 
                 })
                 /////////////////////////////////////////////////////////////////////////////////////////////
-                $('rty').on('mouseover', function () {
-                    $(this).css({ 'background-color': 'lightred', 'color': 'white' });
-                });
-                $('rty').on('mouseout', function () {
-                    $(this).css({ 'background-color': '#993232', 'color': 'white' });
-                })
+
 
                 $('rty').on('click', function () {
-                    showStart();
+                    $('rty').off('mouseout mouseover');
+                    $('rty').css({ 'background-color': '#641111', 'color': 'white' });
+                    window.location.href = $('.topicUrl').val();
+                    // setTimeout(showStart, 700);
+                    // firstTime = false;
 
                 })
+
+
                 // player 1 score
                 $(document.createElement('y6')).text(player1score).appendTo('#frame');
 
+                $("y6").animate({
+
+                    left: '5%',
+
+
+
+
+                    opacity: '1',
+                }, 750, function () { })
+
 
                 //player image holder
-                $(document.createElement('img')).addClass('init-mage').css({ 'top': '210px', 'color': 'white', 'right': '750px' }).attr('src', playerImage).appendTo('#frame');
+                $(document.createElement('img')).addClass('init-mages').attr('src', playerImage).appendTo('#frame');
+
+                $("img.init-mages").animate({
+
+                    left: '5%',
 
 
+
+
+                    opacity: '1',
+                }, 750, function () { })
 
 
                 // player 2 score
                 $(document.createElement('j7')).text(player2score).appendTo('#frame');
 
+                $("j7").animate({
+
+                    right: '10%',
+
+
+
+
+                    opacity: '1',
+                }, 550, function () { })
+
 
                 //robot image holder
-                $(document.createElement('img')).addClass('init-bot').css({ 'top': '210px', 'color': 'white', 'left': '750px' }).attr('src', robotImage).appendTo('#frame');
+                $(document.createElement('img')).addClass('init-botes').attr('src', robotImage).appendTo('#frame');
+
+                $("img.init-botes").animate({
+
+                    right: '10%',
+
+
+
+
+                    opacity: '1',
+                }, 750, function () { })
+
+
 
             }
 
@@ -735,16 +960,16 @@
 
         //Andriod documentation
             function DriodPicks() {
-             
+
                     if (Difficulty == "beginner") {
-                        var chances = Math.round(Math.random() * (9 - 5)) + 1; // generate new time (between 3sec and 500"s)
+                        chances = Math.round(Math.random() * (target - 0)) + 1; // generate new time (between 3sec and 500"s)
                     } else if (Difficulty == "intermediate") {
-                        var chances = Math.round(Math.random() * (7 - 1)) + 1; // generate new time (between 3sec and 500"s)
+                        chances = Math.round(Math.random() * (target)) + 0; // generate new time (between 3sec and 500"s)
                     } else {
-                        chances = Math.round(Math.random() * (7 - 1)) + 4; // generate new time (between 3sec and 500"s)
+                        chances = target; // generate new time (between 3sec and 500"s)
                         //window.alert(chances)
                     }
-                
+
                 currentquiz++;
               clearInterval(myFar);
 
@@ -786,24 +1011,29 @@
 
 
                             $.getJSON(targetid, function (data) {
+
                                 if (data.quiz[currentquestion]['tag'] == 3) {
-                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('la')).addClass('la').attr('id', 'la').text(htmlEncode(data.quiz[currentquestion]['correct'])).css({ 'background-color': '#017d46', 'border-radius': '3px', 'color': 'white', 'width': '340px', 'height': '32px', 'padding': '25px 0', 'opacity': '1', 'top': '520px', 'right': '320px', 'left': '700px' }).appendTo('#choice-block'); }, 1500);
+                                    //window.alert('1');
+                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('la')).addClass('choice-box2').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'la').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
                                 } else if (data.quiz[currentquestion]['tag'] == 1) {
-                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lo')).addClass('lo').attr('id', 'lo').text(htmlEncode(data.quiz[currentquestion]['correct'])).css({ 'background-color': '#017d46', 'border-radius': '3px', 'color': 'white', 'width': '340px', 'height': '32px', 'padding': '25px 0', 'opacity': '1', 'top': '400px', 'right': '320px', 'left': '700px' }).appendTo('#choice-block'); }, 1500);
+                                    //window.alert('2');
+                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lu')).addClass('choice-box1').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'lu').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
                                 } else if (data.quiz[currentquestion]['tag'] == 2) {
-                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('li')).addClass('li').attr('id', 'li').text(htmlEncode(data.quiz[currentquestion]['correct'])).css({ 'background-color': '#017d46', 'border-radius': '3px', 'color': 'white', 'width': '340px', 'height': '32px', 'padding': '25px 0', 'opacity': '1', 'top': '400px', 'right': '700px', 'left': '320px' }).appendTo('#choice-block'); }, 1500);
+                                    //window.alert('3');
+                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('li')).addClass('choice-box3').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'la').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
                                 } else {
-                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lu')).addClass('lu').attr('id', 'lu').text(htmlEncode(data.quiz[currentquestion]['correct'])).css({ 'background-color': '#017d46', 'border-radius': '3px', 'color': 'white', 'width': '340px', 'height': '32px', 'padding': '25px 0', 'opacity': '1', 'top': '520px', 'right': '700px', 'left': '320px' }).appendTo('#choice-block'); }, 1500);
+                                    //window.alert('4');
+                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lo')).addClass('choice-box4').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'lo').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
                                 }
 
                             })
 
-                            
+
                             function gameEnd() {
                                 $('tyu').empty();
                                 $('iop').empty();
-                               
 
+                                $("img.any-image").fadeTo(100, 0);
 
 
                                 $.getJSON(targetid, function (data) {
@@ -829,7 +1059,7 @@
 
                     if (droidchose == data.quiz[currentquestion]['tag']) {
                         $("#otherboard").empty();
-                        
+
                         score2++;
                         $(document.createElement('h17')).text(Math.round(score2 / data.quiz.length * 100)).appendTo('#otherboard');
 
@@ -859,7 +1089,7 @@
             function init(){
                 started = false;
 
-               
+
                     backgroundSound.play();
 
 
@@ -872,7 +1102,7 @@
 
                     $("h1").animate({
                         opacity: 1,
-                        left: "+=80",
+                        left: "+=50",
 
                     }, 500, function () {
                         // Animation complete.
@@ -895,7 +1125,7 @@
 
                     $("h15").animate({
                         opacity: 1,
-                        right: "+=80",
+                        right: "+=50",
 
                     }, 500, function () {
                         // Animation complete.
@@ -921,7 +1151,16 @@
                         })
 
 
+                        //any image holder
+                        $(document.createElement('img')).addClass('any-image').attr('src', anyImage).appendTo('#frame');
 
+                        $("img.any-image").animate({
+
+
+
+
+                            opacity: '1',
+                        }, 350, function () { })
 
                        // $(document.createElement('h6')).addClass('explanation').css({ 'font-size': '18px',  'text-align': 'center', 'font': '18px', 'font-weight': '800', 'opacity': '1', 'right': '-30px', 'top': '300px' }).attr('id', 'explanation').html('&nbsp;').insertAfter('#question');
 
@@ -930,13 +1169,12 @@
                         //add timer holder
                         //$(document.createElement('h9')).attr('id', 'submitbutton').appendTo('#frame');
                         //add choices
-                        $(document.createElement('h4')).attr('id', 'timetext').appendTo('#frame');
+
 
                         $(document.createElement('h3')).attr('id', 'scoreboard').appendTo('#frame');
 
                         $(document.createElement('h17')).attr('id', 'otherboard').appendTo('#frame');
 
-                        $(document.createElement('h9')).attr('id', 'thatshit').appendTo('#frame');
 
                         $.getJSON(targetid, function (data) {
                             addChoices(data.quiz[0]['choices']);
@@ -966,7 +1204,7 @@
                         //$(document.createElement('h3')).css({ 'text-align': 'bottom', 'font-size': '2em', 'top': '200px', 'right': '200px' }).text(Math.round(score / quiz.length * 100)).insertAfter('#question');
 
                         //add timer count
-                        $(document.createElement('h9')).text(timer).appendTo('#thatshit');
+                        $(document.createElement('h9')).text(timer).appendTo('#frame');
 
 
                         $('#scoreboard').fadeTo(3000, 1);
@@ -975,11 +1213,11 @@
                         $('h1').fadeTo(1000, 1);
 
                         //player2 progress bar
-                        $(document.createElement('h16')).addClass('iop').attr('id', 'iop').css({ 'font-size': '2em Gotham SSm B', 'opacity': '1', 'top': '0px', 'left': '0px' }).appendTo('#frame');
+                        $(document.createElement('h16')).addClass('iop').attr('id', 'iop').css({ 'font-size': '2em Gotham SSm B', 'opacity': '1', 'top': '0%', 'left': '0px' }).appendTo('#frame');
 
 
                         //pprogress bar
-                        $(document.createElement('h10')).addClass('tyu').attr('id', 'tyu').css({ 'font-size': '2em Gotham SSm B', 'opacity': '1', 'top': '0px', 'left': '0px' }).appendTo('#frame');
+                        $(document.createElement('h10')).addClass('tyu').attr('id', 'tyu').css({ 'font-size': '2em Gotham SSm B', 'opacity': '1', 'top': '0%', 'left': '0px' }).appendTo('#frame');
 
 
 
@@ -1006,53 +1244,154 @@
                 //remove hud
                 $('h16').remove();
                 $('h10').remove();
+                $("img.any-image").fadeTo(10, 0);
 
                 //add player name and details
                 //$(document.createElement('h')).addClass('matt').attr('id', 'matt').css({ 'font-size': '6em Gotham SSm B', 'opacity': '0', 'top': '170px', 'left': '0px' }).text('GENERAL KNOWLEGDE').appendTo('#frame');
-                
+
 
                 category.play();
                 //category image holder
 
+
+
+
                 //add first question
                 $.getJSON(targetid, function (data) {
                     var required = currentquestion;
-                    if (currentquestion >= 0) {
+                    if (currentquestion >= 0 ) {
                         required++;
+                        $('j.poer').empty();
 
+                        //any image holder
 
 
                         $(document.createElement('j')).addClass('poer').attr('id', 'poer').text("ROUND " + required).appendTo('#frame');
-                        
+                        $("j.poer").animate({
+
+                            top: '400px',
+
+
+
+
+                            opacity: '1',
+                        }, 550, function () { })
                     }
 
                     if (required == 1) {
                         required++;
-                        $('j').empty();
+                        $('j.poer').empty();
+                        $(document.createElement('img')).addClass('that-image').attr('src', thatImage).appendTo('#frame');
+
+                        $("img.that-image").animate({
+
+                            height: '230px',
+                            width: '230px',
+                            top: '140',
+
+
+                            opacity: '1',
+                        }, 400, function () { })
+
+                        //any image holder
+
                         $(document.createElement('j')).addClass('poer').attr('id', 'poer').text("FIRST ROUND").appendTo('#frame');
+                        $("j.poer").animate({
 
+                            top: '400px',
+
+
+
+
+                            opacity: '1',
+                        }, 550, function () { })
                     } else if (required == data.quiz.length) {
-                        $('j').empty();
-                        $(document.createElement('j')).addClass('poer').attr('id', 'poer').text("BONUS ROUND").appendTo('#frame');
+                        $('j.poer').empty();
 
+                        $(document.createElement('j')).addClass('poer').attr('id', 'poer').text("BONUS ROUND").appendTo('#frame');
+                        //any image holder
+                        $(document.createElement('img')).addClass('bonus-image').attr('src', bonusImage).appendTo('#frame');
+
+                        $("j.poer").animate({
+
+                            top: '400px',
+
+
+
+
+                            opacity: '1',
+                        }, 550, function () { })
+
+                        $("img.bonus-image").animate({
+
+                            height: '230px',
+                            width: '230px',
+                            top: '140',
+
+
+                            opacity: '1',
+                        }, 400, function () { })
                     }
 
+
+
                 })
+
+
+
+
+                    // Animation complete.
+
+
+
+
                 setTimeout(function () {
 
                     //$('#pager').empty();
                     $('wert').fadeTo(200, 0);
+                    $("img.bonus-image").animate({
 
-                    $('j').fadeTo(200, 0);
+                        height: '30px',
+                        width: '30px',
+                        top: '-170px',
 
-                    if (started == true) {
-                        init();
 
-                    }else{
+                        opacity: '0',
+                    }, 550, function () { })
+                    $("img.that-image").animate({
 
-                        nextQuestion();
+                        height: '30px',
+                        width: '30px',
+                        top: '-170px',
 
-                    }
+
+                        opacity: '0',
+                    }, 550, function () { })
+
+                    $("j.poer").animate({
+
+                        top: '900px',
+
+
+
+
+                        opacity: '1',
+                    }, 550, function () { })
+
+
+
+                    setTimeout(function () {
+                        if (started == true) {
+                            init();
+
+
+                        } else {
+
+
+                            nextQuestion();
+
+                        }
+                    }, 300)
 
                 }, 2500);
             }
@@ -1074,7 +1413,7 @@
                 $('#frame').empty();
 
 
-                startSound.play();
+
 
                 trio = Math.round(Math.random() * (10 - 5)) + 1; // generate new time (between 3sec and 500"s)
 
@@ -1084,144 +1423,126 @@
                 //alert (data.item1+" "+data.item2+" "+data.item3); //further debug
                 currentquestion = 0, score2 = 0, droidchose = 0, selected = false, score = 0, submt = true, timer = 10, started = true, picked, player1score=0, player2score=0;
 
-                //add line
-                $(document.createElement('h8')).addClass('wert').attr('id', 'wert').css({ 'font-size': '2em Gotham SSm B', 'opacity': '1', 'width': '0px', 'left': '0px' }).appendTo('#frame');
-
-
-                //player backimage holder
-                $(document.createElement('img')).addClass('back-mage').attr('src', playerBackImage).appendTo('#frame');
-
-                //add player name and details
-                $(document.createElement('i')).addClass('matt').attr('id', 'matt').css({ 'font-size': '6em Gotham SSm B', 'opacity': '0', 'top': '170px'}).text(playerName).appendTo('#frame');
-
-                //player image holder
-                $(document.createElement('img')).addClass('init-mage').attr('src', playerImage).appendTo('#frame');
 
 
 
-                //robot backimage holder
-                $(document.createElement('img')).addClass('back-rob').attr('src', robotBackImage).appendTo('#frame');
-
-                //add robot name and details
-                $(document.createElement('g')).addClass('glat').attr('id', 'glat').css({ 'font-size': '6em Gotham SSm B', 'opacity': '0', 'top': '480px' }).text(robotName).appendTo('#frame');
-
-                //robot image holder
-                $(document.createElement('img')).addClass('init-bot').attr('src', robotImage).appendTo('#frame');
-
-
-
-
-                $(document.createElement('yu')).addClass('circle').attr('id', 'circle').appendTo('#frame');
-
-                //logo
-                $(document.createElement('us')).appendTo('#frame');
-
-                setTimeout(function () {
-                    $("h8").animate({
-
-
-                        width: '2600px',
-
-                        opacity: '1',
-
-                    }, 800);
-                }, 600)
-
-
-                function animatethis() {
-
-
-                    $("yu").animate({
-
-
-                        width: '125px',
-                        height: '125px',
-                        
-                        opacity: '1'
-
-                    }, 450, function () {
-
-                        $("yu").animate({
-
-
-                            width: '100px',
-                            height: '100px',
-                            
-                            opacity: '1'
-
-                        }, 450, function () {
-                            animatethis();
-
-                        });
-                    });
-
-                }
-                animatethis();
 
                 //add waiting text
-                $(document.createElement('j')).addClass('loader').attr('id', 'loader').text('GATHERING QUESTIONS').appendTo('#frame');
+                $(document.createElement('y')).text('GATHERING QUESTIONS...').appendTo('#frame');
 
                 setTimeout(function () {
 
-                    $('j.loader').fadeTo(10, 0);
 
-                    $("img.init-mage").animate({
-                        opacity: 1,
-                        right: "+=1000",
+                    $('y').remove();
+                    //player backimage holder
+                    $(document.createElement('img')).addClass('bac-mage').attr('src', playerBackImage).appendTo('#frame');
 
-                    }, 1000, function () {
-                        // Animation complete.
-                    });
+                    //add player name and details
+                    $(document.createElement('i')).addClass('matt').attr('id', 'matt').css({ 'font-size': '4em Gotham SSm B', 'opacity': '0', 'top': '80px' }).text(playerName).appendTo('#frame');
 
-                    $("img.back-mage").animate({
-                        opacity: 1,
-                        top: "+=320",
+                    //player image holder
+                    $(document.createElement('img')).addClass('init-mage').attr('src', playerImage).appendTo('#frame');
 
-                    }, 500, function () {
-                        // Animation complete.
-                    });
 
-                    $("img.back-rob").animate({
-                        opacity: 1,
-                        bottom: "+=305",
 
-                    }, 500, function () {
-                        // Animation complete.
-                    });
+                    //robot backimage holder
+                    $(document.createElement('img')).addClass('back-rob').attr('src', robotBackImage).appendTo('#frame');
 
-                    $("img.init-bot").animate({
-                        opacity: 1,
-                        left: "+=1000",
+                    //add robot name and details
+                    $(document.createElement('g')).addClass('glat').attr('id', 'glat').css({ 'font-size': '4em Gotham SSm B', 'opacity': '0', 'top': '620px' }).text(robotName).appendTo('#frame');
 
-                    }, 1000, function () {
-                        // Animation complete.
-                    });
+                    //robot image holder
+                    $(document.createElement('img')).addClass('init-bot').attr('src', robotImage).appendTo('#frame');
+
+                    //add line
+                    $(document.createElement('h8')).addClass('wert').attr('id', 'wert').css({ 'font-size': '2em Gotham SSm B', 'opacity': '1', 'width': '0px', 'left': '0px' }).appendTo('#frame');
+
+
+
+                    //$(document.createElement('span')).addClass('circle-edu').attr('id', 'circle-edu').appendTo('#frame');
+                    $(document.createElement('h30')).addClass('cyc').attr('id', 'cyc').appendTo('#frame');
+                    //logo
+                    $(document.createElement('us')).appendTo('#frame');
+
+                    setTimeout(function () {
+                        startSound.play();
+                        $("h8").animate({
+
+
+                            width: '3000px',
+
+                            opacity: '1',
+
+                        }, 800);
+                    }, 600)
+
+
+
+                    function animatthis() {
+
+
+                        $("h30").animate({
+
+
+                            width: '125px',
+                            height: '125px',
+
+                            opacity: '1'
+
+                        }, 800, function () {
+
+                            $("h30").animate({
+
+
+                                width: '100px',
+                                height: '100px',
+
+                                opacity: '1'
+
+                            }, 800, function () {
+                                animatthis();
+
+                            });
+                        });
+
+                    }
+                    animatthis();
+
 
                     $("i.matt").animate({
                         opacity: 1,
-                        right: "+=670",
-                        width: '400px'
+                        right: "+=70%",
+
                     }, 1000, function () {
                         // Animation complete.
                     });
 
                     $("g.glat").animate({
                         opacity: 1,
-                        left: "+=670",
-                        width: '400px'
+                        left: "+=70%",
+
                     }, 1000, function () {
                         // Animation complete.
                     });
-                }, 2000)
+                }, 3000)
 
-               
+
+
+
+
+
+
+
+
+
+
                 setTimeout(function () {
 
                     //$('#pager').empty();
                     swishe.play();
-                    $('yu').stop();
+                    $('h30').stop();
                     $('#loader').fadeTo(10, 0);
-                    $("yu").animate({
+                    $("h30").animate({
 
 
                         width: '100%',
@@ -1229,23 +1550,23 @@
                         top: '-240px',
                         bottom: '0px',
 
-                      
-                    
+
+
                         left: '-0px',
                         right: '0px',
-                      
+
                         borderRadius: '550px',
                         opacity: '1',
 
 
-                    }, 400, function () {
+                    }, 900, function () {
 
 
 
-                        $('yu').fadeTo(300, 0);
+                        $('h30').fadeTo(300, 0);
 
 
-                        setTimeout(function () { $('yu').remove(); showCategory() }, 500);
+                        setTimeout(function () { $('h30').remove(); showCategory() }, 500);
                     });
 
 
@@ -1256,10 +1577,11 @@
                     $('i.matt').remove();
                     $('us').remove();
                     $("img.init-mage").remove();
-                    $("img.back-mage").remove();
+                    $("img.bac-mage").remove();
                     $("img.back-rob").remove();
                     $("img.init-bot").remove();
                     $("g.glat").remove();
+                    $('y').remove();
                 }, 10000)
             }
 
@@ -1273,8 +1595,6 @@
     });
     </script>
 
-    
-
 </head>
 <body>
     <input class="userName" type="hidden" value="<?php echo $name ?>">
@@ -1283,8 +1603,9 @@
     <input class="profilePic" type="hidden" value="<?php echo $profilePic ?>">
     <input class="gamePic" type="hidden" value="<?php echo $gamePic ?>">
     <input class="difficulty" type="hidden" value="<?php echo $difficulty ?>">
+    <input class="topicUrl" type="hidden" value="<?php echo site_url('Main/Topics'); ?>">
     <div id="frame"></div>
 
-   
+
 </body>
 </html>
