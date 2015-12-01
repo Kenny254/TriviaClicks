@@ -9,7 +9,6 @@
 
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="<?php echo site_url();?>assets/css/maingame.css" rel="stylesheet" type="text/css" media="only screen" />
     <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="<?php echo site_url();?>assets/css/small-device.css" />
@@ -374,11 +373,11 @@
                                     $.getJSON(targetid, function (data) {
                                         currentquestion++;
                                         if (currentquestion == data.quiz.length) {
-                                            var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('lu').fadeTo(300, 0); }, 2500);
+                                            var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2500);
                                             setTimeout(endQuiz, 3000);
                                         } else {
                                             allowed = true;
-                                            var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('lu').fadeTo(300, 0); }, 2500);
+                                            var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2500);
                                             setTimeout(function () { showCategory(); }, 3000);
 
 
@@ -436,11 +435,11 @@
                                     $.getJSON(targetid, function (data) {
                                         currentquestion++;
                                         if (currentquestion == data.quiz.length) {
-                                            var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('lu').fadeTo(300, 0); }, 2500);
+                                            var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2500);
                                             setTimeout(endQuiz, 3000);
                                         } else {
 
-                                            var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('lu').fadeTo(300, 0); }, 2500);
+                                            var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2500);
                                             setTimeout(function () { showCategory(); }, 3000);
 
 
@@ -647,7 +646,7 @@
                                 setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lu')).addClass('choice-box1').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'lu').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
                             } else if (data.quiz[currentquestion]['tag'] == 2) {
                                 //window.alert('3');
-                                setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('li')).addClass('choice-box3').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'la').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
+                                setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('li')).addClass('choice-box3').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'li').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
                             } else {
                                 //window.alert('4');
                                 setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lo')).addClass('choice-box4').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'lo').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
@@ -667,11 +666,11 @@
                             $.getJSON(targetid, function (data) {
                                 currentquestion++;
                                 if (currentquestion == data.quiz.length) {
-                                    var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(300, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('lu').fadeTo(300, 0); }, 2500);
+                                    var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(300, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2500);
                                     setTimeout(endQuiz, 3000);
                                 } else {
                                     allowed = true;
-                                    var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(300, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('lu').fadeTo(300, 0); }, 2500);
+                                    var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(300, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2500);
                                     var ty = setTimeout(function () { showCategory(); }, 3000);
 
                                 }
@@ -727,6 +726,17 @@
                     won.play();
 
                     points = 10;
+
+                    $.ajax({
+                        url: '../givePoints/'+points,
+                        type: 'GET',
+                        success: function(data){
+                           // alert(data);
+                        },
+                        error: function(data){
+                           // alert("Error");
+                        }
+                    });
 
                     //any star1 holder
                     $(document.createElement('img')).addClass('star1-image').css({ 'opacity': '0' }).attr('src', starImage2).appendTo('#frame');
@@ -849,6 +859,7 @@
 
                 $(document.createElement('rty')).addClass('choice choice-box5').attr('data-index', 0).css({ 'opacity': '0' }).text('Not Right Now..').appendTo('#choice-block');
                 $(document.createElement('last')).addClass('choice choice-box6').attr('data-index', 0).css({ 'opacity': '0' }).text('Bring it On').appendTo('#choice-block');
+                $(document.createElement('scoreboard')).addClass('choice choice-box7').attr('data-index', 0).css({ 'opacity': '1' }).text('Scoreboard').appendTo('#choice-block');
 
 
                 $("rty").animate({
@@ -887,11 +898,18 @@
                     $('rty').off('mouseout mouseover');
                     $('rty').css({ 'background-color': '#641111', 'color': 'white' });
                     window.location.href = $('.topicUrl').val();
-                    // setTimeout(showStart, 700);
                     // firstTime = false;
 
                 })
 
+
+                $('scoreboard').on('click', function () {
+                    $('scoreboard').off('mouseout mouseover');
+                    $('scoreboard').css({ 'background-color': '#641111', 'color': 'white' });
+                    window.location.href = $('.sbUrl').val();
+                    // firstTime = false;
+
+                })
 
                 // player 1 score
                 $(document.createElement('y6')).text(player1score).appendTo('#frame');
@@ -1020,7 +1038,7 @@
                                     setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lu')).addClass('choice-box1').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'lu').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
                                 } else if (data.quiz[currentquestion]['tag'] == 2) {
                                     //window.alert('3');
-                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('li')).addClass('choice-box3').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'la').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
+                                    setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('li')).addClass('choice-box3').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'li').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
                                 } else {
                                     //window.alert('4');
                                     setTimeout(function () { $('.choice').off('click'); $('.choice').fadeTo(400, 0); $(document.createElement('lo')).addClass('choice-box4').css({ 'background-color': '#017d46', 'color': 'white' }).attr('id', 'lo').text(htmlEncode(data.quiz[currentquestion]['correct'])).appendTo('#choice-block'); }, 1000);
@@ -1039,11 +1057,11 @@
                                 $.getJSON(targetid, function (data) {
                                     currentquestion++;
                                     if (currentquestion == data.quiz.length) {
-                                        var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('lu').fadeTo(300, 0); }, 2500);
+                                        var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2500);
                                         setTimeout(endQuiz, 3000);
                                     } else {
                                         allowed = true;
-                                        var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('lu').fadeTo(300, 0); }, 2500);
+                                        var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2500);
                                         var ty = setTimeout(function () { showCategory(); }, 3000);
 
                                     }
@@ -1287,7 +1305,7 @@
 
                             height: '230px',
                             width: '230px',
-                            top: '140',
+                            top: '140px',
 
 
                             opacity: '1',
@@ -1326,7 +1344,7 @@
 
                             height: '230px',
                             width: '230px',
-                            top: '140',
+                            top: '140px',
 
 
                             opacity: '1',
@@ -1594,7 +1612,7 @@
 
     });
     </script>
-
+  
 </head>
 <body>
     <input class="userName" type="hidden" value="<?php echo $name ?>">
@@ -1604,6 +1622,7 @@
     <input class="gamePic" type="hidden" value="<?php echo $gamePic ?>">
     <input class="difficulty" type="hidden" value="<?php echo $difficulty ?>">
     <input class="topicUrl" type="hidden" value="<?php echo site_url('Main/Topics'); ?>">
+    <input class="sbUrl" type="hidden" value="<?php echo site_url('Main/Scoreboard'); ?>">
     <div id="frame"></div>
 
 

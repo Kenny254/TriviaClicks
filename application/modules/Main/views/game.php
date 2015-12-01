@@ -11,7 +11,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href="<?php echo site_url();?>assets/css/maingame.css" rel="stylesheet" type="text/css" media="only screen" />
-    <!-- <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="<?php echo site_url();?>assets/css/small-device.css" /> -->
+    <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="<?php echo site_url();?>assets/css/small-device.css" />
 
     <script>
 
@@ -115,7 +115,7 @@
 
             var thatImage = "../../../assets/gameimages/round.png";
 
-            var bonusImage = "../../../assets/gameimages/bonus.png";
+            var bonusImage = "../../../assets/gameimages/../../../assets/gameimages/bonus.png";
 
             var winImage = "../../../assets/gameimages/win.png";
 
@@ -666,12 +666,12 @@
                             $.getJSON(targetid, function (data) {
                                 currentquestion++;
                                 if (currentquestion == data.quiz.length) {
-                                    var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(300, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2500);
-                                    setTimeout(endQuiz, 3000);
+                                    var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(300, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2000);
+                                    setTimeout(endQuiz, 2500);
                                 } else {
                                     allowed = true;
-                                    var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(300, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2500);
-                                    var ty = setTimeout(function () { showCategory(); }, 3000);
+                                    var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(300, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2000);
+                                    var ty = setTimeout(function () { showCategory(); }, 2500);
 
                                 }
 
@@ -803,7 +803,7 @@
                                 }, 350, function () { })
                             })
                         })
-                    }, 500);
+                    }, 800);
 
 
                     //any image holder
@@ -816,7 +816,7 @@
 
 
                         opacity: '1',
-                    }, 350, function () { })
+                    }, 500, function () { })
 
 
 
@@ -836,7 +836,7 @@
 
 
                         opacity: '1',
-                    }, 350, function () { })
+                    }, 500, function () { })
 
                 } else {
                     $(document.createElement('j')).addClass('tyup').attr('id', 'tyup').text("A TIE").appendTo('#frame');
@@ -851,7 +851,7 @@
 
 
                         opacity: '1',
-                    }, 350, function () { })
+                    }, 500, function () { })
 
                     badSound.play();
                     points = 0;
@@ -859,34 +859,84 @@
 
                 $(document.createElement('rty')).addClass('choice choice-box5').attr('data-index', 0).css({ 'opacity': '0' }).text('Not Right Now..').appendTo('#choice-block');
                 $(document.createElement('last')).addClass('choice choice-box6').attr('data-index', 0).css({ 'opacity': '0' }).text('Bring it On').appendTo('#choice-block');
-                $(document.createElement('scoreboard')).addClass('choice choice-box7').attr('data-index', 0).css({ 'opacity': '1' }).text('Scoreboard').appendTo('#choice-block');
+                $(document.createElement('scoreboard')).addClass('choice choice-box7').attr('data-index', 0).css({ 'opacity': '0' }).text('Scoreboard').appendTo('#choice-block');
 
 
-                $("rty").animate({
-
-                    height: '30px',
-                    width: '230px',
-
-
-
-                    opacity: '1',
-                }, 200, function () {
-                    // Animation complete.
-
-                    $("last").animate({
+                setTimeout(function () { 
+                    $("rty").animate({
 
                         height: '30px',
                         width: '230px',
+                        top: '520px',
+
 
                         opacity: '1',
-                    }, 280, function () { })
+                    }, 100, function () {
+                        // Animation complete.
 
-                })
+                        $("last").animate({
+
+                            height: '30px',
+                            width: '230px',
+                            top: '520px',
+                            opacity: '1',
+                        }, 350, function () {
+
+                            $("scoreboard").animate({
+
+                                height: '30px',
+                                width: '230px',
+                                top: '520px',
+                                opacity: '1',
+                            }, 280, function () { })
+                        })
+
+
+                    })
+                }, 1500)
+
+                
+               
+
+          
 
 
                 $('last').on('click', function () {
                     $('last').off('mouseout mouseover');
                     $('last').css({ 'background-color': '#193e38', 'color': 'white' });
+                    setTimeout(function () {
+                        $("rty").animate({
+
+                            height: '30px',
+                            width: '230px',
+                            top: '920px',
+
+
+                            opacity: '1',
+                        }, 100, function () {
+                            // Animation complete.
+
+                            $("last").animate({
+
+                                height: '30px',
+                                width: '230px',
+                                top: '920px',
+                                opacity: '1',
+                            }, 350, function () {
+
+                                $("scoreboard").animate({
+
+                                    height: '30px',
+                                    width: '230px',
+                                    top: '920px',
+                                    opacity: '1',
+                                }, 280, function () { })
+                            })
+
+
+                        })
+                    }, 150)
+
                     setTimeout(showStart, 700);
                     // firstTime = false;
 
@@ -897,7 +947,41 @@
                 $('rty').on('click', function () {
                     $('rty').off('mouseout mouseover');
                     $('rty').css({ 'background-color': '#641111', 'color': 'white' });
+
                     window.location.href = $('.topicUrl').val();
+
+                    setTimeout(function () {
+                        $("rty").animate({
+
+                            height: '30px',
+                            width: '230px',
+                            top: '920px',
+
+
+                            opacity: '1',
+                        }, 100, function () {
+                            // Animation complete.
+
+                            $("last").animate({
+
+                                height: '30px',
+                                width: '230px',
+                                top: '920px',
+                                opacity: '1',
+                            }, 350, function () {
+
+                                $("scoreboard").animate({
+
+                                    height: '30px',
+                                    width: '230px',
+                                    top: '920px',
+                                    opacity: '1',
+                                }, 280, function () { })
+                            })
+
+
+                        })
+                    }, 150)
                     // firstTime = false;
 
                 })
@@ -906,8 +990,45 @@
                 $('scoreboard').on('click', function () {
                     $('scoreboard').off('mouseout mouseover');
                     $('scoreboard').css({ 'background-color': '#641111', 'color': 'white' });
+                    
                     window.location.href = $('.sbUrl').val();
-                    // firstTime = false;
+
+                    setTimeout(function () {
+                        $("rty").animate({
+
+                            height: '30px',
+                            width: '230px',
+                            top: '920px',
+
+
+                            opacity: '1',
+                        }, 100, function () {
+                            // Animation complete.
+
+                            $("last").animate({
+
+                                height: '30px',
+                                width: '230px',
+                                top: '920px',
+                                opacity: '1',
+                            }, 350, function () {
+
+                                $("scoreboard").animate({
+
+                                    height: '30px',
+                                    width: '230px',
+                                    top: '920px',
+                                    opacity: '1',
+                                }, 280, function () { })
+                            })
+
+
+                        })
+                    }, 150)
+
+
+                    
+                    // your scoreboard function goes here..........................
 
                 })
 
@@ -1057,12 +1178,12 @@
                                 $.getJSON(targetid, function (data) {
                                     currentquestion++;
                                     if (currentquestion == data.quiz.length) {
-                                        var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2500);
-                                        setTimeout(endQuiz, 3000);
+                                        var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2000);
+                                        setTimeout(endQuiz, 2500);
                                     } else {
                                         allowed = true;
-                                        var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2500);
-                                        var ty = setTimeout(function () { showCategory(); }, 3000);
+                                        var js = setTimeout(function () { $("#question").fadeTo(500, 0); $('.choice').fadeTo(600, 0); $('la').fadeTo(300, 0); $('lo').fadeTo(300, 0); $('lu').fadeTo(300, 0); $('li').fadeTo(300, 0); }, 2000);
+                                        var ty = setTimeout(function () { showCategory(); }, 2500);
 
                                     }
 

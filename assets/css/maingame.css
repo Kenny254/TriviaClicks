@@ -206,8 +206,8 @@
 
         last {
             position: absolute;
-            top: 520px;
-            left: 20px;
+            top: 800px;
+            left: -30px;
             color: white;
             height: 29px;
             font: 1.1em Gotham SSm A;
@@ -223,7 +223,7 @@
 
         scoreboard {
             position: absolute;
-            top: 610px;
+            top: 800px;
             left: 20px;
             color: white;
             height: 29px;
@@ -239,8 +239,8 @@
 
         rty {
            position: absolute;
-            top: 520px;
-            right: 20px;
+            top: 800px;
+            right: -20px;
             color: white;
             height: 29px;
             font: 1.1em Gotham SSm A;
@@ -1189,7 +1189,7 @@
             position: absolute;
             width: 290px;
             height: 29px;
-            left: 340px;
+            right: 210px;
            
             color: white;
             padding: 25px;
@@ -1210,7 +1210,7 @@
            position: absolute;
             width: 290px;
             height: 29px;
-            right: 340px;
+            left: 210px;
            
             color: white;
             padding: 25px;
