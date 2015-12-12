@@ -4,21 +4,75 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "78c8d8b4211f7296e3b3321f341fdd9a",
-    "content-hash": "cb20712edb1b756dc0a9d99fe821aa3f",
+    "hash": "08629ec307ec4d48e730164a0502fa9f",
+    "content-hash": "06bb5be940a875efda9730e44c9ff521",
     "packages": [
         {
-            "name": "parse/php-sdk",
-            "version": "1.1.6",
+            "name": "abraham/twitteroauth",
+            "version": "0.6.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ParsePlatform/parse-php-sdk.git",
-                "reference": "f1f3e14073746fdc76f455a600e3db7b59e1d490"
+                "url": "https://github.com/abraham/twitteroauth.git",
+                "reference": "d4fc4a3c36f5ecdfc8865ab1e7cefc432e49491c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ParsePlatform/parse-php-sdk/zipball/f1f3e14073746fdc76f455a600e3db7b59e1d490",
-                "reference": "f1f3e14073746fdc76f455a600e3db7b59e1d490",
+                "url": "https://api.github.com/repos/abraham/twitteroauth/zipball/d4fc4a3c36f5ecdfc8865ab1e7cefc432e49491c",
+                "reference": "d4fc4a3c36f5ecdfc8865ab1e7cefc432e49491c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpmd/phpmd": "2.2.*",
+                "phpunit/phpunit": "4.7.*",
+                "squizlabs/php_codesniffer": "2.3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Abraham\\TwitterOAuth\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Abraham Williams",
+                    "email": "abraham@abrah.am",
+                    "homepage": "https://abrah.am",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The most popular PHP library for use with the Twitter OAuth REST API.",
+            "homepage": "https://twitteroauth.com",
+            "keywords": [
+                "Twitter API",
+                "Twitter oAuth",
+                "api",
+                "oauth",
+                "rest",
+                "social",
+                "twitter"
+            ],
+            "time": "2015-11-05 04:04:20"
+        },
+        {
+            "name": "parse/php-sdk",
+            "version": "1.1.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ParsePlatform/parse-php-sdk.git",
+                "reference": "ba0400e187029d40070b5456455b85e91b337e53"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ParsePlatform/parse-php-sdk/zipball/ba0400e187029d40070b5456455b85e91b337e53",
+                "reference": "ba0400e187029d40070b5456455b85e91b337e53",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +112,7 @@
                 "parse",
                 "sdk"
             ],
-            "time": "2015-10-13 20:04:19"
+            "time": "2015-11-30 07:33:06"
         }
     ],
     "packages-dev": [

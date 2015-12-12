@@ -85,11 +85,10 @@ class ParseQuery
      *
      * @throws ParseException
      *
-     * @return array
+     * @return array|ParseObject Returns the selected object or an empty array
      */
     public function get($objectId, $useMasterKey = false)
     {
-        //session_write_close();
         $this->equalTo('objectId', $objectId);
         $result = $this->first($useMasterKey);
         if (empty($result)) {
@@ -120,6 +119,12 @@ class ParseQuery
 
     /**
      * Helper for condition queries.
+     *
+     * @param string $key       The key to where constraints
+     * @param string $condition The condition name
+     * @param mixed  $value     The condition value, can be a string or an array of strings
+     *
+     * @throws Exception
      */
     private function addCondition($key, $condition, $value)
     {
@@ -213,6 +218,10 @@ class ParseQuery
      * Converts a string into a regex that matches it.
      * Surrounding with \Q .. \E does this, we just need to escape \E's in
      * the text separately.
+     *
+     * @param mixed $s The string or array being replaced.
+     *
+     * @return string Returns the string converted.
      */
     private function quote($s)
     {
@@ -273,11 +282,10 @@ class ParseQuery
      *
      * @param bool $useMasterKey If the query should use the master key
      *
-     * @return array
+     * @return array|ParseObject Returns the first object or an empty array
      */
     public function first($useMasterKey = false)
     {
-        //session_write_close();
         $this->limit = 1;
         $result = $this->find($useMasterKey);
         if (count($result)) {
@@ -336,17 +344,15 @@ class ParseQuery
      *
      * @param bool $useMasterKey
      *
-     * @return array
+     * @return ParseObject[]
      */
     public function find($useMasterKey = false)
     {
-        //session_write_close();
         $sessionToken = null;
         if (ParseUser::getCurrentUser()) {
             $sessionToken = ParseUser::getCurrentUser()->getSessionToken();
         }
         $queryString = $this->buildQueryString($this->_getOptions());
-        
         $result = ParseClient::_request(
             'GET',
             'classes/'.$this->className.'?'.$queryString,
@@ -455,7 +461,8 @@ class ParseQuery
             $key = array_map(
                 function ($element) {
                     return '-'.$element;
-                }, $key
+                },
+                $key
             );
             $this->orderBy = array_merge($this->orderBy, $key);
         } else {
@@ -551,7 +558,8 @@ class ParseQuery
     public function withinGeoBox($key, $southwest, $northeast)
     {
         $this->addCondition(
-            $key, '$within',
+            $key,
+            '$within',
             ['$box' => [$southwest, $northeast]]
         );
 
@@ -685,7 +693,8 @@ class ParseQuery
         $queryParam = $query->_getOptions();
         $queryParam['className'] = $query->className;
         $this->addCondition(
-            $key, '$select',
+            $key,
+            '$select',
             ['key' => $queryKey, 'query' => $queryParam]
         );
 
@@ -709,7 +718,8 @@ class ParseQuery
         $queryParam = $query->_getOptions();
         $queryParam['className'] = $query->className;
         $this->addCondition(
-            $key, '$dontSelect',
+            $key,
+            '$dontSelect',
             ['key' => $queryKey, 'query' => $queryParam]
         );
 
@@ -818,7 +828,6 @@ class ParseQuery
      */
     public function select($key)
     {
-        //session_write_close();
         if (is_array($key)) {
             $this->selectedKeys = array_merge($this->selectedKeys, $key);
         } else {
@@ -858,7 +867,6 @@ class ParseQuery
      */
     public function relatedTo($key, $value)
     {
-        //session_write_close();
         $this->addCondition('$relatedTo', $key, $value);
 
         return $this;

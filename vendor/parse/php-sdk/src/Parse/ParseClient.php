@@ -5,7 +5,6 @@ namespace Parse;
 use Exception;
 use Parse\Internal\Encodable;
 
-
 /**
  * ParseClient - Main class for Parse initialization and communication.
  *
@@ -66,11 +65,25 @@ final class ParseClient
     private static $forceRevocableSession = false;
 
     /**
+     * Number of seconds to wait while trying to connect. Use 0 to wait indefinitely.
+     *
+     * @var int
+     */
+    private static $connectionTimeout;
+
+    /**
+     * Maximum number of seconds of request/response operation.
+     *
+     * @var int
+     */
+    private static $timeout;
+
+    /**
      * Constant for version string to include with requests.
      *
      * @var string
      */
-    const VERSION_STRING = 'php1.1.0';
+    const VERSION_STRING = 'php1.1.9';
 
     /**
      * Parse\Client::initialize, must be called before using Parse features.
@@ -147,7 +160,7 @@ final class ParseClient
         }
 
         if (!is_scalar($value) && $value !== null) {
-            throw new \Exception('Invalid type encountered.');
+            throw new Exception('Invalid type encountered.');
         }
 
         return $value;
@@ -251,8 +264,12 @@ final class ParseClient
      *
      * @return mixed Result from Parse API Call.
      */
-    public static function _request($method, $relativeUrl, $sessionToken = null,
-        $data = null, $useMasterKey = false
+    public static function _request(
+        $method,
+        $relativeUrl,
+        $sessionToken = null,
+        $data = null,
+        $useMasterKey = false
     ) {
         if ($data === '[]') {
             $data = '{}';
@@ -265,10 +282,7 @@ final class ParseClient
             $url .= '?'.http_build_query($data);
         }
         $rest = curl_init();
-        curl_setopt($rest, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($rest, CURLOPT_URL, $url);
-        // curl_setopt($rest, CURLOPT_TIMEOUT, 500);
-        // set_time_limit(0);
         curl_setopt($rest, CURLOPT_RETURNTRANSFER, 1);
         if ($method === 'POST') {
             $headers[] = 'Content-Type: application/json';
@@ -284,6 +298,14 @@ final class ParseClient
             curl_setopt($rest, CURLOPT_CUSTOMREQUEST, $method);
         }
         curl_setopt($rest, CURLOPT_HTTPHEADER, $headers);
+
+        if (!is_null(self::$connectionTimeout)) {
+            curl_setopt($rest, CURLOPT_CONNECTTIMEOUT, self::$connectionTimeout);
+        }
+        if (!is_null(self::$timeout)) {
+            curl_setopt($rest, CURLOPT_TIMEOUT, self::$timeout);
+        }
+
         $response = curl_exec($rest);
         $status = curl_getinfo($rest, CURLINFO_HTTP_CODE);
         $contentType = curl_getinfo($rest, CURLINFO_CONTENT_TYPE);
@@ -442,5 +464,26 @@ final class ParseClient
     public static function enableRevocableSessions()
     {
         self::$forceRevocableSession = true;
+    }
+
+    /**
+     * Sets number of seconds to wait while trying to connect. Use 0 to wait indefinitely, null to default behaviour.
+     *
+     * @param int|null $connectionTimeout
+     */
+    public static function setConnectionTimeout($connectionTimeout)
+    {
+        self::$connectionTimeout = $connectionTimeout;
+    }
+
+    /**
+     * Sets maximum number of seconds of request/response operation.
+     * Use 0 to wait indefinitely, null to default behaviour.
+     *
+     * @param int|null $timeout
+     */
+    public static function setTimeout($timeout)
+    {
+        self::$timeout = $timeout;
     }
 }

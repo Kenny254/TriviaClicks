@@ -147,12 +147,12 @@ $(document).ready(function(c) {
 	          <br>
 	          <div class="row">
 	          	<div class="col-sm-6 col-sm-offset-3">
-	                <!-- <a href="<?php echo $twloginUrl ?>"><button type="button" style="font: bold 12px/30px Georgia, serif;" class="text-center btn btn-info btn-block">
-                        Sign in with Twitter</button>
-                    </a> -->
-                    <a href="#"><button type="button" style="font: bold 12px/30px Georgia, serif;" class="text-center btn btn-info btn-block">
+	                <a href="<?php echo $twloginUrl ?>"><button type="button" style="font: bold 12px/30px Georgia, serif;" class="text-center btn btn-info btn-block">
                         Sign in with Twitter</button>
                     </a>
+                    <!-- <a href="#"><button type="button" style="font: bold 12px/30px Georgia, serif;" class="text-center btn btn-info btn-block">
+                        Sign in with Twitter</button>
+                    </a> -->
 	            </div>
 	          </div>
 	          </form>

@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Parse\\' => array($vendorDir . '/parse/php-sdk/src/Parse'),
+    'Abraham\\TwitterOAuth\\' => array($vendorDir . '/abraham/twitteroauth/src'),
 );

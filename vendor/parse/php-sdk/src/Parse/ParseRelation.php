@@ -139,7 +139,6 @@ class ParseRelation
      */
     public function getQuery()
     {
-        //session_write_close();
         $query = new ParseQuery($this->targetClassName);
         $query->relatedTo('object', $this->parent->_toPointer());
         $query->relatedTo('key', $this->key);

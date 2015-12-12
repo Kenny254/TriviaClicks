@@ -94,7 +94,6 @@ class ParseFile implements Encodable
         $headers = ParseClient::_getRequestHeaders(null, true);
         $url = ParseClient::getAPIUrl().'files/'.$this->getName();
         $rest = curl_init();
-        curl_setopt($rest, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($rest, CURLOPT_URL, $url);
         curl_setopt($rest, CURLOPT_CUSTOMREQUEST, 'DELETE');
         curl_setopt($rest, CURLOPT_RETURNTRANSFER, 1);
@@ -211,10 +210,7 @@ class ParseFile implements Encodable
         $headers = ParseClient::_getRequestHeaders(null, false);
         $url = ParseClient::getAPIUrl().'files/'.$this->getName();
         $rest = curl_init();
-        curl_setopt($rest, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($rest, CURLOPT_URL, $url);
-        // curl_setopt($rest, CURLOPT_TIMEOUT, 500);
-        // set_time_limit(0);
         curl_setopt($rest, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($rest, CURLOPT_BINARYTRANSFER, 1);
         $headers[] = 'Content-Type: '.$mimeType;
@@ -245,7 +241,6 @@ class ParseFile implements Encodable
     private function download()
     {
         $rest = curl_init();
-        curl_setopt($rest, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($rest, CURLOPT_URL, $this->url);
         curl_setopt($rest, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($rest, CURLOPT_BINARYTRANSFER, 1);
