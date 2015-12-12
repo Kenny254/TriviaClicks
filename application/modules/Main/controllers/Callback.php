@@ -7,7 +7,7 @@ use Parse\ParseQuery;
 use Parse\ParseClient;
 use Parse\ParseException;
 use Parse\ParseSessionStorage;
-//use Parse\ParseSessionStorage;
+use Abraham\TwitterOAuth\TwitterOAuth;
 
 class Callback extends CI_Controller {
 
@@ -107,6 +107,78 @@ class Callback extends CI_Controller {
 		  // access token from $_SESSION['facebook_access_token']
 		}
 			
+	}
+
+	public function twitter()
+	{
+		$consumerKey = "3pYslO0IESqXMShvzDtyPKJck"; // Consumer Key
+		$consumerSecret = "5Avys4ft8XejhgFl1Qqe6YUCMDgukdoVVFMeuGPZ5GGt4fpLhO"; // Consumer Secret
+		// The TwitterOAuth instance
+		$twitteroauth = new TwitterOAuth($consumerKey, $consumerSecret);
+
+		// Requesting authentication tokens, the parameter is the URL we will be redirected to
+		$callback = (string)site_url('Main/Callback/twCallback');
+		$request_token = $twitteroauth->oauth('oauth/request_token', array('oauth_callback' => $callback));
+		 // var_dump($request_token);
+		 // exit;
+		// Saving them into the session
+		$_SESSION['oauth_token'] = $request_token['oauth_token'];
+		$_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];
+		 
+		// If everything goes well..
+		if($twitteroauth->getLastHttpCode()==200){
+		    // Let's generate the URL and redirect
+		    //$url = $twitteroauth->getAuthorizeURL($request_token['oauth_token']);
+		    $url = $twitteroauth->url("oauth/authorize", array("oauth_token" => $request_token['oauth_token']));
+		    header('Location: '. $url);
+		} else {
+		    // It's a bad idea to kill the script, but we've got to know when there's an error.
+		    die('Something wrong happened.');
+		}
+	}
+
+	public function twCallback()
+	{
+		$consumerKey = "3pYslO0IESqXMShvzDtyPKJck"; // Consumer Key
+		$consumerSecret = "5Avys4ft8XejhgFl1Qqe6YUCMDgukdoVVFMeuGPZ5GGt4fpLhO"; // Consumer Secret
+
+		if(!empty($_GET['oauth_verifier']) && !empty($_SESSION['oauth_token']) && !empty($_SESSION['oauth_token_secret'])){
+    		// We've got everything we need
+
+    		// TwitterOAuth instance, with two new parameters we got in twitter method
+			$twitteroauth = new TwitterOAuth($consumerKey, $consumerSecret, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+			// Let's request the access token
+			$access_token = $twitteroauth->oauth("oauth/access_token", array("oauth_verifier" => $_GET['oauth_verifier']));
+			// Save it in a session var
+			$_SESSION['access_token'] = $access_token;
+
+			// Twitter instance , for getting user details
+			$twitter = new TwitterOAuth($consumerKey, $consumerSecret);
+
+			// twitter instance to actually authenticate users
+			$twitteroauth = new TwitterOAuth($consumerKey, $consumerSecret, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+
+			// OAuth2 instance for authenticating and verifying users to get details
+        	$result = $twitter->oauth2('oauth2/token', array('grant_type' => 'client_credentials'));
+			//$access_token = $twitteroauth->getAccessToken($_GET['oauth_verifier']);
+
+			// $screenName = (string)$access_token['screen_name'];
+
+			// $_SESSION['oauth_token'] = $access_token['oauth_token'];
+			// $_SESSION['oauth_token_secret'] = $access_token['oauth_token_secret'];
+
+			// Let's get the user's info
+			// $details = $twitter->get("users/show", array('screen_name' => $screenName));
+
+			$user_info = $twitteroauth->get('account/verify_credentials');
+
+			// Print user's info
+			var_dump($user_info);
+			exit;	
+		} else {
+		    // Something's missing, go back to square 1
+		    header('Location: twitter_login.php');
+		}
 	}
 
 	

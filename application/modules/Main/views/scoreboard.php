@@ -111,7 +111,6 @@ $(document).ready(function() {
         <thead>
             <tr>
                 <th>Rank</th>
-                <th>Country</th>
                 <th>Profile</th>
                 <th>Name</th>
                 <th>Score</th>
@@ -127,7 +126,6 @@ $(document).ready(function() {
             ?>
                 <tr>
                     <td><?= $rank ?></td>
-                    <td>NG</td>
                     <td><img class="img-circle" height="27" width="27" src="<?= $val['picture'] ?>"></td>
                     <td><?= $val['name'] ?></td>
                     <td><?= (empty($val['points']))? '0' : $val['points'] ?></td>

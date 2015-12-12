@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/vendor/facebook-php-sdk/src/Facebook/autoload.php';
+require_once __DIR__ . '/vendor/twitteroauth/autoload.php';
 /**
  * CodeIgniter
  *

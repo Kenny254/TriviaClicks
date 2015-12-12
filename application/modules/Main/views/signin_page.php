@@ -139,7 +139,7 @@ $(document).ready(function(c) {
 	          <br>
 	          <div class="row">
 	          	<div class="col-sm-6 col-sm-offset-3">
-	                 <a href="<?php echo $loginUrl ?>"><button type="button" style="font: bold 12px/30px Georgia, serif;" name="createbeac[beacuuid]" class="text-center btn btn-primary btn-block">
+	                 <a href="<?php echo $fbloginUrl ?>"><button type="button" style="font: bold 12px/30px Georgia, serif;" name="createbeac[beacuuid]" class="text-center btn btn-primary btn-block">
 	                 	Sign in with Facebook
 	                 </button></a>
 	            </div>
@@ -147,7 +147,12 @@ $(document).ready(function(c) {
 	          <br>
 	          <div class="row">
 	          	<div class="col-sm-6 col-sm-offset-3">
-	                 <button type="button" style="font: bold 12px/30px Georgia, serif;" class="text-center btn btn-info btn-block">Sign in with Twitter</button>
+	                <!-- <a href="<?php echo $twloginUrl ?>"><button type="button" style="font: bold 12px/30px Georgia, serif;" class="text-center btn btn-info btn-block">
+                        Sign in with Twitter</button>
+                    </a> -->
+                    <a href="#"><button type="button" style="font: bold 12px/30px Georgia, serif;" class="text-center btn btn-info btn-block">
+                        Sign in with Twitter</button>
+                    </a>
 	            </div>
 	          </div>
 	          </form>
