@@ -11,9 +11,16 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 
 class Callback extends CI_Controller {
 
+	public function __construct()
+	{
+		parent::__construct();
+		
+		//Do your magic here
+		ParseClient::setStorage( new ParseSessionStorage() );
+	}
+
 	public function index()
 	{
-		ParseClient::setStorage( new ParseSessionStorage() );
 		$fb = new Facebook\Facebook([
 		  'app_id' => '1630991853823416',
 		  'app_secret' => '5970b129fe7f15f55534e060aef703a7',
@@ -172,13 +179,72 @@ class Callback extends CI_Controller {
 
 			$user_info = $twitteroauth->get('account/verify_credentials');
 
+			$pic = str_replace('/', '%20', $user_info->profile_image_url);
+			$cover = str_replace('/', '%20', $user_info->profile_background_image_url);
+
+			redirect(site_url('Main/Callback/twmoveon/'.$user_info->name.'/'.$user_info->id_str.
+				'/'.$pic.'/'.$cover));
+
 			// Print user's info
-			var_dump($user_info);
-			exit;	
+			// var_dump($user_info);
+			// exit;	
+			
 		} else {
 		    // Something's missing, go back to square 1
 		    header('Location: twitter_login.php');
 		}
+	}
+
+	public function twmoveon($name, $id, $pic, $cover)
+	{
+		$completename = str_replace('%20', ' ', $name);
+		$compPic = str_replace('%20', '/', $pic);
+		$compCover = str_replace('%20', '/', $cover);
+		// var_dump($compPic);
+		// exit;
+
+		// Signup user on parse, else signin user
+		$parseUser = new ParseUser();
+		$parseUser->set("username", $id);
+		$parseUser->set("password", $id);
+		$parseUser->set("email", $id);
+		$parseUser->set("fullName", $name);
+		$parseUser->set("picture", $compPic);
+		$parseUser->set("cover", $compCover);
+		$parseUser->set("difficulty", "beginner");
+		try {
+			//$accessToken = "";
+		    $parseUser->signUp();
+		    // Hooray! Let them use the app now.
+		    $username = $id;
+		    $password = $id;
+		    $session_var = ['Parseusername' => $username,
+		    				'Parsepassword' => $password,
+		    				];
+
+		    $this->session->set_userdata($session_var);
+		    
+	 		redirect('Main/Profile', 'refresh');
+		} catch (ParseException $ex) {
+		  // Show the error message somewhere and let the user try again.
+		  // var_dump($ex->getCode().$ex->getMessage());
+		  // exit;
+		  if($ex->getCode() == 202){
+		  	$username = $id;
+		    $password = $id;
+		    // $session_var = ['Parseusername' => $username,
+		    // 				'Parsepassword' => $password,
+		    // 				];
+		    
+		    // $this->session->set_userdata($session_var);
+		    // var_dump('Got here, Yay!');
+	    	// exit;
+	    	$user = ParseUser::logIn($username, $password);
+		  	redirect('Main/Profile', 'refresh');
+		  }
+		  //echo "Error: " . $ex->getCode() . " " . $ex->getMessage();
+		}
+		
 	}
 
 	

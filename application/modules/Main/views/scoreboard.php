@@ -90,9 +90,9 @@ $(document).ready(function() {
                     <div class="menu2">
                         <span class="menu-at-on"><img src="<?php echo site_url();?>assets/images/setter.png" alt=""> </span>
                         <ul>
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">Log Out</a></li>
+<!--                             <li><a href="#">Profile</a></li>
+                            <li><a href="#">Login</a></li> -->
+                            <li><a href="<?php echo site_url('Main/Logout');?>">Log Out</a></li>
                         </ul>
                         <script>
 						$("span.menu-at-on").click(function(){

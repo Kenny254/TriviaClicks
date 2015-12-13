@@ -123,7 +123,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul>
 						<!-- <li><a href="#">Profile</a></li>
 						<li><a href="#" >Login</a></li>	 -->
-						<li><a href="#" >Log Out</a></li>							
+						<li><a href="<?php echo site_url('Main/Logout');?>" >Log Out</a></li>							
 					</ul>
 					<script>
 						$("span.menu-at-on").click(function(){

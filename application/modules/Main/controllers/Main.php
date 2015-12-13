@@ -56,7 +56,7 @@ class Main extends CI_Controller {
 		$loginUrl = $helper->getLoginUrl(site_url('Main/Callback'), $permissions);
 
 		// This is for twitter
-		$twloginurl = site_url('Main/Callback/twitter');
+		$twloginurl = site_url('Main/Twcallback');
 
 		$currentUser = ParseUser::getCurrentUser();
 		// var_dump($currentUser);
