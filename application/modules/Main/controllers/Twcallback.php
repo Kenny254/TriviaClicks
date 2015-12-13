@@ -109,8 +109,8 @@ class Twcallback extends CI_Controller {
 			  // exit;
 
 			  if($ex->getCode() == 202){
-			  	$username = $id;
-			    $password = $id;
+			  	$username = $user_info->id_str.'@triviatweet.com';
+			    $password = $user_info->id_str;
 			    // $session_var = ['Parseusername' => $username,
 			    // 				'Parsepassword' => $password,
 			    // 				];
