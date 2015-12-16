@@ -12,6 +12,8 @@ use Parse\ParseObject;
 use Parse\ParseClient;
 use Parse\ParseSessionStorage;
 
+
+
 class Logout extends CI_Controller {
 
 	public function __construct()
