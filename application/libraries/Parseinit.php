@@ -24,7 +24,7 @@ class Parseinit
 	{
 		
 		
-		ParseClient::initialize('0hLdfJbYiaNkyd1ZOtWnfTyFgkVsGltsjj80WcK8', 'E3aSKwVbcXlI9CY9bjugz1qO0JhX87OzB0MQSmCE', 'YROitDMLUABWCLIOeDx5nZh67FYAHpZFCnyEko59');
+		ParseClient::initialize('nTcvDgCEIcIVXVhd8NWZKbrvlTPkdfiP4p8tZmHr', 'FeUTtA7IJJNA69A3xapE7jsLOwlUqaWgP8YDm3AC', '7fRIrKCLhXtgKVdOvwxXebsfbuHEh2uViP6wS8P5');
 		//ParseClient::setStorage( new ParseSessionStorage() );
 
 	}
