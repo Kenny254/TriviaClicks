@@ -68,7 +68,7 @@ class Uploadpage extends CI_Controller {
 			// $quesnum = (int)$upload['quesnum'];
 			$imageId = $upload['gameId'];
 			$fileName = $imageId.'.json';
-			$question = $upload['question'];
+			$question = str_replace('"', '', $upload['question']);
 			$answer = $upload['answer'];
 			$optiona = $upload['optiona'];
 			$optionb = $upload['optionb'];
