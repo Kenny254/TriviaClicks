@@ -196,10 +196,6 @@
 
 
 
-       //window.alert(window.screen.availHeight)
-
-
-
             /**
              * HTML Encoding function for alt tags and attributes to prevent messy
              * data appearing inside tag attributes.
